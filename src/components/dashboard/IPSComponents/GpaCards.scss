@@ -1,0 +1,22 @@
+.content-area-cards {
+    display: flex;
+    height: 400px;
+    align-items: flex-start; /* Pastikan kartu tidak dipaksa memiliki tinggi yang sama */
+  }
+  
+  .area-card {
+    flex: none; /* Ukuran kartu tidak akan memengaruhi elemen lain */
+  }
+  
+
+
+.area-card.gpa-card-secondary {
+
+    height: 400px; /* Set tinggi card */
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Posisikan konten di bagian atas */
+    padding: 16px; /* Tambahkan padding jika diperlukan */
+  }
+  

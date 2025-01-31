@@ -1,0 +1,112 @@
+.main-card-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+  }
+  
+  .main-card {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .sub-card {
+    flex: 1; /* Membagi ukuran sama besar */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid #e0e0e0;
+  
+    &:last-child {
+      border-right: none; /* Hilangkan garis kanan pada card terakhir */
+    }
+  }
+  
+  .left-card {
+    background-color: #f4f6f8;
+  }
+  
+  .center-card {
+    background-color: #e8f0fe;
+  }
+  
+  .right-card {
+    background-color: #f4f6f8;
+  }
+  
+  h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    color: #333333;
+  }
+  
+  p {
+    margin: 0;
+    font-size: 14px;
+    color: #666666;
+  }
+  
+  /* Tambahkan styling untuk GpaCard */
+.area-card {
+  display: flex;
+  justify-content: space-between; /* Pisahkan elemen kiri dan kanan */
+  align-items: center; /* Rata tengah secara vertikal */
+  width: 100%; /* Buat lebar penuh */
+}
+
+.area-card-info {
+  flex: 1; /* Area kiri mengambil ruang yang tersedia */
+  text-align: left; /* Rata kiri */
+}
+
+.area-card-chart {
+  flex-shrink: 0; /* Area kanan tidak mengecil */
+  margin-left: 20px; /* Beri jarak dengan area kiri */
+}
+
+
+//card ke dua
+.center-card {
+  background-color: #e8f0fe;
+}
+
+.info-container {
+  display: flex;
+  align-items: center;
+  gap: 54px; /* Jarak antara foto dan teks */
+  text-align: left; /* Supaya teks rata kiri */
+}
+
+.student-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%; /* Membuat gambar bulat */
+  object-fit: cover; /* Untuk memastikan gambar tidak terdistorsi */
+}
+
+.info-text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Jarak antar teks */
+}
+
+.student-name {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.student-nim,
+.student-ipk,
+.student-semester {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+}

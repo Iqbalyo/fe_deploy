@@ -1,0 +1,142 @@
+import React, { useEffect, useState } from 'react';
+import { styled } from '@mui/material/styles';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Typography from '@mui/material/Typography'; // Tambahkan ini
+
+import TablePagination from '@mui/material/TablePagination'; // Tambahkan untuk pagination
+import Paper from '@mui/material/Paper';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAbsensiById } from '../../../store/action/userData.action';
+import styles from './TableKehadiran.module.css';
+
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+    fontSize: '16px',
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: '14px',
+  },
+  '&.clickable': {
+    color: theme.palette.common.black,
+    cursor: 'pointer',
+    fontSize: '16px',
+    '&:hover': {
+      textDecoration: 'none',
+      backgroundColor: theme.palette.action.hover,
+    },
+  },
+}));
+
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+  '&:nth-of-type(odd)': {
+    backgroundColor: theme.palette.action.hover,
+  },
+}));
+
+const TableKehadiran = () => {
+  const nim = localStorage.getItem('nim');
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { absen, currentSemester, currentPeriode, lastSemester } = useSelector((state) => state.data);
+
+  // State untuk pagination
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
+
+  useEffect(() => {
+    if (nim) {
+      dispatch(getAbsensiById(nim));
+    }
+  }, [dispatch, nim]);
+
+  // Pagination handler
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
+
+  // Data untuk halaman saat ini
+  const paginatedData = absen?.slice(
+    page * rowsPerPage,
+    page * rowsPerPage + rowsPerPage
+  );
+
+
+
+  return (
+    <TableContainer component={Paper} className={styles.container}>
+      {currentSemester && currentPeriode && lastSemester && (
+        <div className={styles.semesterInfo}>
+          <Typography variant="h6">
+            Semester: {lastSemester} ({currentSemester}) - Periode: {currentPeriode}
+          </Typography>
+        </div>
+      )}
+      <Table sx={{ minWidth: 700 }} aria-label="tabel kehadiran">
+        <TableHead>
+          <TableRow>
+            <StyledTableCell>No</StyledTableCell>
+            <StyledTableCell>Nama Mata Kuliah</StyledTableCell>
+            <StyledTableCell align="center">Jumlah Pertemuan Terakhir</StyledTableCell>
+            <StyledTableCell align="center">Hadir</StyledTableCell>
+            <StyledTableCell align="center">Izin</StyledTableCell>
+            <StyledTableCell align="center">Tanpa Keterangan</StyledTableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {paginatedData && paginatedData.length > 0 ? (
+            paginatedData.map((row, index) => (
+              <StyledTableRow key={index}>
+                <StyledTableCell>{page * rowsPerPage + index + 1}</StyledTableCell>
+                <StyledTableCell
+                  className="clickable"
+                  onClick={() => handleRowClick(row)}
+                >
+                  {row.matakuliah_nama}
+                </StyledTableCell>
+                {/* Tampilkan pertemuan terakhir yang sudah dihitung */}
+                <StyledTableCell align="center">{row.pertemuan_terakhir}</StyledTableCell>
+                <StyledTableCell align="center">{row.hadir}</StyledTableCell>
+                <StyledTableCell align="center">{row.izin}</StyledTableCell>
+                <StyledTableCell align="center">
+                  {row.tanpaKeterangan}
+                </StyledTableCell>
+              </StyledTableRow>
+            ))
+          ) : (
+            <StyledTableRow>
+              <StyledTableCell colSpan={6} align="center">
+                Tidak ada data absensi
+              </StyledTableCell>
+            </StyledTableRow>
+          )}
+        </TableBody>
+      </Table>
+      <TablePagination
+        component="div"
+        count={absen?.length || 0}
+        page={page}
+        onPageChange={handleChangePage}
+        rowsPerPage={rowsPerPage}
+        onRowsPerPageChange={handleChangeRowsPerPage}
+        rowsPerPageOptions={[5, 10, 25]} // Pilihan jumlah baris per halaman
+      />
+    </TableContainer>
+  );
+};
+
+export default TableKehadiran;
+

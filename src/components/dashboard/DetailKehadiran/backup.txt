@@ -1,0 +1,79 @@
+import React, { useEffect, useState } from 'react';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TextField } from '@mui/material';
+
+const DetailKehadiran = () => {
+  const nim = localStorage.getItem('nim'); // Ambil nim dari localStorage
+  const [kehadiranData, setKehadiranData] = useState([]);
+  const [search, setSearch] = useState(''); // Untuk filter data
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`/api/kehadiran/${nim}`); // Ganti URL API dengan nim yang sesuai
+        const data = await response.json();
+        setKehadiranData(data); // Simpan data kehadiran ke dalam state
+      } catch (error) {
+        console.error('Error fetching kehadiran data:', error);
+      }
+    };
+    if (nim) {
+      fetchData(); // Pastikan nim ada sebelum fetch data
+    }
+  }, [nim]);
+
+  // Filter data berdasarkan search
+  const filteredData = kehadiranData.filter((data) =>
+    data.matakuliah_nama.toLowerCase().includes(search.toLowerCase())
+  );
+
+  return (
+    <div>
+      {/* Text Field untuk Filter */}
+      <TextField
+        label="Cari Matakuliah"
+        variant="outlined"
+        fullWidth
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        sx={{
+          backgroundColor: 'white', // Warna putih untuk latar belakang
+          marginBottom: 2, // Spasi bawah
+        }}
+      />
+
+      {/* Tabel Kehadiran */}
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 700 }}>
+          <TableHead>
+            <TableRow>
+              <TableCell sx={{ color: 'white', backgroundColor: 'black' }}>No</TableCell>
+              <TableCell sx={{ color: 'white', backgroundColor: 'black' }}>Matakuliah</TableCell>
+              <TableCell sx={{ color: 'white', backgroundColor: 'black' }}>Tanggal</TableCell>
+              <TableCell sx={{ color: 'white', backgroundColor: 'black' }}>Status</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {filteredData.length > 0 ? (
+              filteredData.map((data, index) => (
+                <TableRow key={index}>
+                  <TableCell sx={{ color: 'black' }}>{index + 1}</TableCell> {/* Ubah warna teks ke hitam */}
+                  <TableCell sx={{ color: 'black' }}>{data.matakuliah_nama}</TableCell> {/* Ubah warna teks ke hitam */}
+                  <TableCell sx={{ color: 'black' }}>{data.absen_at}</TableCell> {/* Ubah warna teks ke hitam */}
+                  <TableCell sx={{ color: 'black' }}>{data.status}</TableCell> {/* Ubah warna teks ke hitam */}
+                </TableRow>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell colSpan={4} align="center" sx={{ color: 'black' }}> {/* Ubah warna teks ke hitam */}
+                  Tidak ada data kehadiran
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </div>
+  );
+};
+
+export default DetailKehadiran;

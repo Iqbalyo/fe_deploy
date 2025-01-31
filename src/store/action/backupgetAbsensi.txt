@@ -1,0 +1,23 @@
+export function getAbsensiById(params) {
+  return async dispatch => {
+      dispatch({ type: actionTypes.GET_INFORMASIABSENSI_REQUEST});
+      try {
+          const response = await fetch(`${baseUrl}/monitoring/unama/v1/absensi/${params}`, {
+              method: 'GET',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+          });
+          if (response.status === 403) {
+              window.location.href = '/login';
+              return;
+          }
+          const res = await response.json();
+          console.log("data : ", res)
+          console.log("Response Data:", res.data);
+          dispatch({ type: actionTypes.GET_INFORMASIABSENSI_SUCCESS, payload: res.data });
+      } catch (error) {
+          dispatch({ type: actionTypes.GET_INFORMASIABSENSI_FAILED, payload: error.message });
+      }
+    };
+}

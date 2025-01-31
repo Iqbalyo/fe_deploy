@@ -1,0 +1,40 @@
+.ukt-card {
+    display: flex;
+    align-items: center;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    margin: 10px 0;
+    width: 100%;
+  }
+  
+  .ukt-card-icon {
+    margin-right: 16px;
+  }
+  
+  .ukt-card-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .ukt-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+  }
+  
+  .ukt-status {
+    font-size: 1em;
+    font-weight: bold;
+    color: #4CAF50;
+    margin-bottom: 4px;
+  }
+  
+  .ukt-date,
+  .ukt-amount {
+    font-size: 0.9em;
+    color: #555;
+  }
+  

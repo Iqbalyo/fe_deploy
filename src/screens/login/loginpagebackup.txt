@@ -1,0 +1,62 @@
+import React, { useState } from "react";
+import { Box, TextField, Button, Typography, Paper, Container } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { login } from "../../store/action/userData.action";
+
+const LoginPage = ({ onLogin }) => {
+  const[params, setparams] = useState({user_id:"",password:''})
+  const dispatch = useDispatch()
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setparams((params) => ({
+      ...params,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(login(params))
+    onLogin(); // Panggil function onLogin saat login sukses
+  };
+
+  return (
+    <Container
+      maxWidth="sm"
+      sx={{
+        height: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <Paper
+        elevation={6}
+        sx={{
+          padding: 4,
+          borderRadius: 3,
+          backgroundColor: "white",
+        }}
+      >
+        <Typography variant="h4" sx={{ textAlign: "center", mb: 3, fontWeight: "bold" }}>
+          Login
+        </Typography>
+        <form onSubmit={handleSubmit}>
+          <TextField label="Username" id="user_id" name="user_id" value={params.user_id} onChange={handleChange} fullWidth margin="normal" required />
+          <TextField label="Password" id="password" name="password" value={params.password} onChange={handleChange} type="password" fullWidth margin="normal" required />
+          <Button
+            type="submit"
+            variant="contained"
+            fullWidth
+            sx={{ mt: 3, backgroundColor: "#ff207d", color: "white" }}
+          >
+            Login
+          </Button>
+        </form>
+      </Paper>
+    </Container>
+  );
+};
+
+export default LoginPage;

@@ -1,0 +1,41 @@
+.gpa-card {
+    display: flex;
+    justify-content: space-between; /* Elemen kiri dan kanan berjauhan */
+    align-items: center; /* Vertikal rata tengah */
+    gap: 16px; /* Jarak antara teks dan chart */
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+  }
+  
+  .gpa-card-info {
+    flex: 1; /* Bagian kiri mengambil lebih banyak ruang */
+    text-align: left;
+  }
+  
+  .info-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+  }
+  
+  .info-value {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--pink-color);
+  }
+  
+  .info-text {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .gpa-card-chart {
+    flex-shrink: 0; /* Jangan menyusutkan bagian chart */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  

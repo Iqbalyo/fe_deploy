@@ -1,0 +1,51 @@
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getJadwalByNim } from '../../../store/action/userData.action';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
+import './style.scss';
+
+const TableJadwal = () => {
+  const nim = localStorage.getItem('nim');
+  const dispatch = useDispatch();
+  const { jadwal } = useSelector((state) => state.data);
+
+  const dayOrder = ["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu"];
+  const sortedJadwal = jadwal.sort((a, b) => {
+    const dayIndexA = dayOrder.indexOf(a.hari);
+    const dayIndexB = dayOrder.indexOf(b.hari);
+    return dayIndexA - dayIndexB || new Date(`1970-01-01T${a.jam}`) - new Date(`1970-01-01T${b.jam}`);
+  });
+
+  useEffect(() => {
+    if (nim) {
+      dispatch(getJadwalByNim(nim));
+    }
+  }, [dispatch, nim]);
+
+  return (
+    <div className="table-container">
+      <TableContainer component={Paper}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell sx={{ fontSize: '18px', color: 'white', fontWeight: 'bold' }}>Hari</TableCell>
+              <TableCell sx={{ fontSize: '18px', color: 'white', fontWeight: 'bold' }}>Jam</TableCell>
+              <TableCell sx={{ fontSize: '18px', color: 'white', fontWeight: 'bold' }}>Ruang</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {sortedJadwal.map((row) => (
+              <TableRow key={row.hari + row.jam}>
+                <TableCell sx={{ fontSize: '18px' }}>{row.hari}</TableCell>
+                <TableCell sx={{ fontSize: '18px' }}>{row.jam}</TableCell>
+                <TableCell sx={{ fontSize: '18px' }}>{row.ruang}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </div>
+  );
+};
+
+export default TableJadwal;
