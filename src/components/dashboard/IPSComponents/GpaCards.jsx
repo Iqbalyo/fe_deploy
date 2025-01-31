@@ -15,7 +15,7 @@ const GpaCards = ({onSemesterChange}) => { //todo,onSemester sebagai props,untuk
   useEffect(() => {
     if (nim) {
       // Fetch data IPK dan IPS dari API
-      fetch(`http://localhost:3000/monitoring/unama/v1/ipk/dataipk`, {
+      fetch(`https://be-deploy-sage.vercel.app/monitoring/unama/v1/ipk/dataipk`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -30,13 +30,13 @@ const GpaCards = ({onSemesterChange}) => { //todo,onSemester sebagai props,untuk
         .catch((error) => console.error("Error fetching IPK data:", error));
 
       // Fetch data mahasiswa (optional, jika Anda ingin menampilkan info mahasiswa)
-      fetch(`http://localhost:3000/api/mahasiswa/${nim}`)
+      fetch(`https://be-deploy-sage.vercel.app/api/mahasiswa/${nim}`)
         .then((response) => response.json())
         .then((data) => setMahasiswa(data))
         .catch((error) => console.error("Error fetching mahasiswa data:", error));
 
       // Fetch data semester terbaru berdasarkan NIM
-      fetch(`http://localhost:3000/monitoring/unama/v1/aktivitas_kuliahs/semester/${nim}`)
+      fetch(`https://be-deploy-sage.vercel.app/monitoring/unama/v1/aktivitas_kuliahs/semester/${nim}`)
         .then((response) => response.json())
         .then((data) => {
           if (data && data.semester_ke && data.semester) {

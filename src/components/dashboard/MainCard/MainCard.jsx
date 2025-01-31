@@ -18,14 +18,14 @@ const MainCard = () => {
   useEffect(() => {
     if (nim) {
       // Fetch data status pembayaran mahasiswa
-      fetch(`http://localhost:3000/monitoring/unama/v1/user/${nim}/payment-status`)
+      fetch(`https://be-deploy-sage.vercel.app/monitoring/unama/v1/user/${nim}/payment-status`)
         .then((response) => response.json())
         .then((data) => setPaymentStatus(data.sts_bayar)) // Simpan status pembayaran
         .catch((error) => console.error("Error fetching payment status:", error));
 
 
         // Fetch data IPK dan IPS
-      fetch(`http://localhost:3000/monitoring/unama/v1/ipk/dataipk`, {
+      fetch(`https://be-deploy-sage.vercel.app/monitoring/unama/v1/ipk/dataipk`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -39,13 +39,13 @@ const MainCard = () => {
         .catch((error) => console.error("Error fetching IPK data:", error));
 
       // Fetch data mahasiswa
-      fetch(`http://localhost:3000/api/mahasiswa/${nim}`)
+      fetch(`https://be-deploy-sage.vercel.app/api/mahasiswa/${nim}`)
         .then((response) => response.json())
         .then((data) => setMahasiswa(data))
         .catch((error) => console.error("Error fetching mahasiswa data:", error));
 
       // Fetch data semester
-      fetch(`http://localhost:3000/monitoring/unama/v1/aktivitas_kuliahs/semester/${nim}`)
+      fetch(`https://be-deploy-sage.vercel.app/monitoring/unama/v1/aktivitas_kuliahs/semester/${nim}`)
         .then((response) => response.json())
         .then((data) => {
           if (data && data.semester_ke && data.semester) {

@@ -23,7 +23,7 @@ const Oke = () => {
   useEffect(() => {
     const fetchKehadiran = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/monitoring/unama/v1/informasi-kehadiran/${matakuliah_nama}`);
+        const response = await fetch(`https://be-deploy-sage.vercel.app/monitoring/unama/v1/informasi-kehadiran/${matakuliah_nama}`);
         
         if (!response.ok) {
           throw new Error('Network response was not ok');

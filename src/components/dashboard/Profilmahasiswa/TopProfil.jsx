@@ -11,7 +11,7 @@ const TopProfil = () => {
   useEffect(() => {
     if (nim) {
       // Fetch data mahasiswa untuk mendapatkan profil
-      fetch(`http://localhost:3000/api/mahasiswa/${nim}`)
+      fetch(`https://be-deploy-sage.vercel.app/api/mahasiswa/${nim}`)
         .then((response) => response.json())
         .then((data) => setMahasiswa(data))
         .catch((error) => console.error("Error fetching mahasiswa data:", error));

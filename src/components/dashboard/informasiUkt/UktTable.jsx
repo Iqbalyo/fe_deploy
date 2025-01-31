@@ -15,7 +15,7 @@ const UktTable = () => {
     const fetchData = async () => {
       try {
         // Ganti URL dengan endpoint API Anda, dengan menambahkan nim sebagai query parameter
-        const response = await fetch(`http://localhost:3000/monitoring/unama/v1/mahasiswa/pembayaran?nim=${nim}`);
+        const response = await fetch(`https://be-deploy-sage.vercel.app/monitoring/unama/v1/mahasiswa/pembayaran?nim=${nim}`);
         const result = await response.json();
 
         // Periksa jika data ada

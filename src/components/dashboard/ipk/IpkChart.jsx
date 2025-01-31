@@ -37,7 +37,7 @@ const IpkChart = () => {
 
   useEffect(() => {
     if (nim) {
-      fetch(`http://localhost:3000/monitoring/unama/v1/ipk/ips-semester/`, {
+      fetch(`https://be-deploy-sage.vercel.app/monitoring/unama/v1/ipk/ips-semester/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

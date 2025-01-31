@@ -10,7 +10,7 @@ const UktCards = () => {
   useEffect(() => {
     if (nim) {
       // Fetch data status pembayaran mahasiswa
-      fetch(`http://localhost:3000/monitoring/unama/v1/user/${nim}/payment-status`)
+      fetch(`https://be-deploy-sage.vercel.app/monitoring/unama/v1/user/${nim}/payment-status`)
         .then((response) => response.json())
         .then((data) => setPaymentStatus(data.sts_bayar)) // Simpan status pembayaran
         .catch((error) => console.error("Error fetching payment status:", error));
