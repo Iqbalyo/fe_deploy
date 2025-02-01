@@ -14,11 +14,10 @@ const TableJadwalKuliah = () => {
     const daysOrder = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
 
     return data.sort((a, b) => {
-      const dayA = a.waktu.split(',')[0].trim();
-      const dayB = b.waktu.split(',')[0].trim();
-      const timeA = a.waktu.split(',')[1]?.trim() || '';
-      const timeB = b.waktu.split(',')[1]?.trim() || '';
-      
+      const dayA = a.waktu.split(',')[0]?.trim();
+      const dayB = b.waktu.split(',')[0]?.trim();
+      const timeA = a.waktu.split(',')[1]?.trim() || ''; // Menambahkan fallback '' jika timeA adalah undefined
+      const timeB = b.waktu.split(',')[1]?.trim() || ''; // Menambahkan fallback '' jika timeB adalah undefined
 
       const dayComparison = daysOrder.indexOf(dayA) - daysOrder.indexOf(dayB);
       if (dayComparison !== 0) return dayComparison;
