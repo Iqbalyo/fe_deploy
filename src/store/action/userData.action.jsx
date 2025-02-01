@@ -160,7 +160,6 @@ export const getJadwalByNim = (nim) => async (dispatch) => {
     if (!response.ok) {
       throw new Error('Failed to fetch jadwal');
     }
-
     const data = await response.json();
     console.log("Jadwal Response:", data);
     dispatch({ type: actionTypes.GET_JADWAL_SUCCESS, payload: data });

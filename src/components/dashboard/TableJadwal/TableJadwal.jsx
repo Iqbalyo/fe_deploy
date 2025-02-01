@@ -16,8 +16,9 @@ const TableJadwalKuliah = () => {
     return data.sort((a, b) => {
       const dayA = a.waktu.split(',')[0].trim();
       const dayB = b.waktu.split(',')[0].trim();
-      const timeA = a.waktu.split(',')[1]?.trim();
-      const timeB = b.waktu.split(',')[1]?.trim();
+      const timeA = a.waktu.split(',')[1]?.trim() || '';
+      const timeB = b.waktu.split(',')[1]?.trim() || '';
+      
 
       const dayComparison = daysOrder.indexOf(dayA) - daysOrder.indexOf(dayB);
       if (dayComparison !== 0) return dayComparison;
@@ -47,6 +48,7 @@ const TableJadwalKuliah = () => {
 
   // Mengurutkan jadwal berdasarkan hari dan waktu
   const sortedJadwal = sortByDayAndTime(jadwal);
+  console.log('Halo', sortedJadwal)
 
   return (
     <TableContainer component={Paper}>
