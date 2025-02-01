@@ -14,10 +14,10 @@ const TableJadwalKuliah = () => {
     const daysOrder = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
 
     return data.sort((a, b) => {
-      const dayA = a.waktu.split(',')[0].trim();
-      const dayB = b.waktu.split(',')[0].trim();
-      const timeA = a.waktu.split(',')[1]?.trim();
-      const timeB = b.waktu.split(',')[1]?.trim();
+      const dayA = a.waktu.split(',')[0]?.trim();
+      const dayB = b.waktu.split(',')[0]?.trim();
+      const timeA = a.waktu.split(',')[1]?.trim() || ''; // Menambahkan fallback '' jika timeA adalah undefined
+      const timeB = b.waktu.split(',')[1]?.trim() || ''; // Menambahkan fallback '' jika timeB adalah undefined
 
       const dayComparison = daysOrder.indexOf(dayA) - daysOrder.indexOf(dayB);
       if (dayComparison !== 0) return dayComparison;
@@ -25,15 +25,6 @@ const TableJadwalKuliah = () => {
       // Jika hari sama, bandingkan waktu
       return timeA.localeCompare(timeB);
     });
-  };
-
-  // Fungsi untuk format tanggal menjadi dd/mm/yyyy
-  const formatDate = (waktu) => {
-    const date = new Date(waktu);
-    const day = String(date.getDate()).padStart(2, '0'); // Menambahkan leading zero jika kurang dari 10
-    const month = String(date.getMonth() + 1).padStart(2, '0'); // Bulan dimulai dari 0, jadi tambahkan 1
-    const year = date.getFullYear();
-    return `${day}/${month}/${year}`;
   };
 
   useEffect(() => {
@@ -77,13 +68,13 @@ const TableJadwalKuliah = () => {
                 <TableCell>{item.matakuliah}</TableCell>
                 <TableCell>{item.kelas}</TableCell>
                 <TableCell>{item.ruang}</TableCell>
-                <TableCell>{formatDate(item.waktu)}</TableCell> {/* Menggunakan formatDate di sini */}
+                <TableCell>{item.waktu}</TableCell>
                 <TableCell>{item.dosen}</TableCell>
               </TableRow>
             ))
           ) : (
             <TableRow>
-              <TableCell colSpan={5} align="center">Tidak ada jadwal yang ditemukan</TableCell>
+              <TableCell colSpan={4} align="center">Tidak ada jadwal yang ditemukan</TableCell>
             </TableRow>
           )}
         </TableBody>
