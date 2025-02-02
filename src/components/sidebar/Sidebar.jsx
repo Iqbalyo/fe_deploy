@@ -112,7 +112,7 @@ const Sidebar = () => {
                 <span className="menu-link-icon">
                   <MdOutlineAttachMoney size={20} />
                 </span>
-                <span className="menu-link-text">Pembayaran UKT</span>
+                <span className="menu-link-text">Biaya Kuliah</span>
               </Link>
             </li>
             <li className="menu-item">
