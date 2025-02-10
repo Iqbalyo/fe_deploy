@@ -8,7 +8,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import ListItemButton from '@mui/material/ListItemButton';
-
+import styles from './TableKehadiran.module.css';
 
 const TableKehadiran = () => {
   const nim = localStorage.getItem('nim');
