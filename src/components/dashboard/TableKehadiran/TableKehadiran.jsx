@@ -39,7 +39,7 @@ const TableKehadiran = () => {
                   primary={row.matakuliah_nama}
                   secondary={
                     <>
-                      <Typography variant="body2">Jumlah Pertemuan Terakhir: {row.pertemuan_terakhir}</Typography>
+                      
                       <Typography variant="body2">Hadir: {row.hadir}</Typography>
                       <Typography variant="body2">Izin: {row.izin}</Typography>
                       <Typography variant="body2">Tanpa Keterangan: {row.tanpaKeterangan}</Typography>
