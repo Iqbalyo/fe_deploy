@@ -8,5 +8,6 @@
   .ukt-container {
     flex: 1; // Membuat kedua tabel memiliki ukuran yang sama
     max-width: 400px; // Sesuaikan dengan ukuran yang diinginkan
+    align-self: flex-start; 
   }
   
