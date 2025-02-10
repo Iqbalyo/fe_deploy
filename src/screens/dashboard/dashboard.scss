@@ -1,0 +1,12 @@
+.table-container {
+    display: flex;
+    justify-content: center;  // Agar sejajar di tengah
+    gap: 20px;  // Beri jarak antara tabel
+    flex-wrap: wrap; // Supaya responsif di layar kecil
+  }
+  .kehadiran-container, 
+  .ukt-container {
+    flex: 1; // Membuat kedua tabel memiliki ukuran yang sama
+    max-width: 400px; // Sesuaikan dengan ukuran yang diinginkan
+  }
+  
