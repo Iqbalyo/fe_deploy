@@ -20,7 +20,7 @@ const [ semester, setSemester] = useState(null); // State untuk menyimpan semste
     <div className="content-area">
       <AreaTop />
       <TopProfil/>
-      <h2>Rekap Absensi</h2> {/* Tampilkan teks sesuai semester */}
+      <h2>Rekap</h2> {/* Tampilkan teks sesuai semester */}
       <TableKehadiran />
       <h2>Informasi Akademik</h2>
   
