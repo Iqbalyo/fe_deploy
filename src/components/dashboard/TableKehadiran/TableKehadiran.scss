@@ -1,0 +1,73 @@
+.kehadiran-container {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.kehadiran-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.kehadiran-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.kehadiran-item {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  border-radius: 5px;
+  background: #f9f9f9;
+  font-size: 16px;
+  text-align: left;
+}
+
+.mata-kuliah {
+  font-weight: bold;
+  color: #333;
+}
+
+.info-kehadiran {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+.hadir,
+.izin,
+.alpha {
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  color: #fff;
+  display: inline-block;
+  width: fit-content;
+}
+
+.hadir {
+  background: #28a745; // Hijau
+}
+
+.izin {
+  background: #007bff; // Biru
+}
+
+.alpha {
+  background: #dc3545; // Merah
+}
+
+.no-data {
+  font-size: 16px;
+  color: #777;
+  margin-top: 10px;
+}
