@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAbsensiById } from "../../../store/action/userData.action";
+import { useNavigate } from "react-router-dom";
 import "./TableKehadiran.scss"; // Menggunakan SCSS
 
 const TableKehadiran = () => {
   const nim = localStorage.getItem("nim");
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { absen } = useSelector((state) => state.data);
 
   useEffect(() => {
@@ -20,7 +22,11 @@ const TableKehadiran = () => {
       <div className="kehadiran-list">
         {absen && absen.length > 0 ? (
           absen.map((row, index) => (
-            <div key={index} className="kehadiran-item">
+            <div
+              key={index}
+              className="kehadiran-item"
+              onClick={() => navigate(`/informasi-kehadiran/${row.matakuliah_nama}`)}
+            >
               <span className="mata-kuliah">{row.matakuliah_nama}</span>
               <div className="info-kehadiran">
                 <span className="hadir">Hadir: {row.hadir}</span>
