@@ -13,7 +13,7 @@ import {
 import AttendancCardsu from "../../components/dashboard/all";
 import TableKehadiran from "../../components/dashboard/TableKehadiran";
 import MainCard from "../../components/dashboard/MainCard/MainCard";
-import UktTable from "../../components/dashboard/UktTable"; // Import UktTable
+ // Import UktTable
 import "./dashboard.scss"
 
 const Dashboard = () => {
@@ -28,7 +28,7 @@ const Dashboard = () => {
       {/* Bungkus dalam div dengan flexbox */}
       <div className="table-container">
         <TableKehadiran />
-        <UktTable />
+
       </div>
 
       <h2>Informasi Akademik</h2>
