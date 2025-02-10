@@ -1,33 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { Table } from 'antd';
-import './UktTable.module.css'; // Import CSS Modules
-import "./Ukt.scss";
+import "./Ukt.scss"; // Menggunakan SCSS yang sudah kamu impor
 
 const UktTable = () => {
-  // State untuk menyimpan data dari API
   const [data, setData] = useState([]);
 
-  // Mengambil NIM dari localStorage
-  const nim = localStorage.getItem('nim');
+  const nim = localStorage.getItem("nim");
 
-  // Mengambil data dari API berdasarkan nim saat komponen pertama kali dimuat
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Ganti URL dengan endpoint API Anda, dengan menambahkan nim sebagai query parameter
-        const response = await fetch(`https://be-deploy-sage.vercel.app/monitoring/unama/v1/mahasiswa/pembayaran?nim=${nim}`);
+        const response = await fetch(
+          `https://be-deploy-sage.vercel.app/monitoring/unama/v1/mahasiswa/pembayaran?nim=${nim}`
+        );
         const result = await response.json();
 
-        // Periksa jika data ada
         if (result && Array.isArray(result)) {
-          // Map data untuk memastikan status pembayaran sesuai
-          const mappedData = result.map(item => ({
-            nim: item.nim,
-            nama: item.nama,
-            semester_ke: item.semester_ke,
-            status_pembayaran: item.status_pembayaran === 'Lunas' ? 'Lunas' : 'Belum Lunas',
+          const mappedData = result.map((item) => ({
+            semester: `Semester ${item.semester_ke}`,
+            status: item.status_pembayaran === "Lunas" ? "Lunas" : "Belum Lunas",
           }));
-          setData(mappedData); // Menyimpan data yang sudah dimodifikasi ke dalam state
+
+          setData(mappedData);
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -35,35 +28,25 @@ const UktTable = () => {
     };
 
     if (nim) {
-      fetchData(); // Panggil fungsi jika NIM tersedia
+      fetchData();
     } else {
       console.error("NIM tidak ditemukan di localStorage.");
     }
-  }, [nim]); // Menambahkan nim sebagai dependensi agar data diperbarui jika nim berubah
-
-  // Kolom yang ingin ditampilkan
-  const columns = [
-    {
-      title: 'Semester',
-      dataIndex: 'semester_ke', // Data dari API yang menunjukkan semester
-      key: 'semester_ke',
-    },
-    {
-      title: 'Status Pembayaran',
-      dataIndex: 'status_pembayaran', // Data status pembayaran (Lunas / Belum Lunas)
-      key: 'status_pembayaran',
-    },
-  ];
+  }, [nim]);
 
   return (
-    <div className="ukt-table-container">
-      <h3 className="ukt-title">Riwayat Pembayaran UKT</h3>
-      <Table 
-        columns={columns} 
-        dataSource={data} // Menggunakan data yang telah diambil dari API
-        scroll={{ x: '100%' }} // Menambahkan scroll horizontal
-        rowKey={(record) => `${record.nim}-${record.semester_ke}`} // Memberikan kunci unik per baris
-      />
+    <div className="ukt-container">
+      <h2 className="ukt-title">Status Pembayaran Kuliah</h2>
+      <div className="ukt-list">
+        {data.map((item, index) => (
+          <div key={index} className="ukt-item">
+            <span className="semester">{item.semester}</span>
+            <span className={`status ${item.status.toLowerCase()}`}>
+              {item.status}
+            </span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

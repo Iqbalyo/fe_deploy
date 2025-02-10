@@ -1,38 +1,52 @@
-.ukt-table-container {
-    // Kontainer utama tabel
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    overflow-x: auto; 
-  
-    // Styling untuk tabel
-    .ant-table {
-      // Ubah warna header tabel
-      .ant-table-thead > tr > th {
-        background-color: #f0f0f0;
-        color: #333;
-        font-weight: bold;
-      }
-  
-      // Ubah warna baris data
-      .ant-table-tbody > tr > td {
-        border-bottom: 1px solid #e8e8e8;
-        padding: 10px;
-      }
-  
-      // Ubah warna baris data yang aktif
-      .ant-table-row:hover {
-        background-color: #f5f5f5;
-      }
-    }
+.ukt-container {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.ukt-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.ukt-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ukt-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  border-radius: 5px;
+  background: #f9f9f9;
+  font-size: 16px;
+}
+
+.semester {
+  font-weight: bold;
+  color: #333;
+}
+
+.status {
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 5px;
+
+  &.lunas {
+    color: #28a745;
+    background: #d4edda;
   }
-  
-  .ukt-title {
-    // Judul tabel
-    font-size: 20px;
-    color: #0079b1;
-    margin-bottom: 20px;
+
+  &.belum {
+    color: #dc3545;
+    background: #f8d7da;
   }
+}
