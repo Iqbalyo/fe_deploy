@@ -6,7 +6,7 @@ import {
 } from "../../components";
 import TableKehadiran from "../../components/dashboard/TableKehadiran";
 import MainCard from "../../components/dashboard/MainCard/MainCard";
-import UktTable from "../../components/dashboard/UktTable"; // Import UktTable
+import UktTable from "../../components/dashboard/informasiUkt/UktTable"; // Import UktTable
 import "./dashboard.scss"
 
 const Dashboard = () => {
