@@ -1,16 +1,9 @@
 import { useState } from "react";
 import {
-  AreaCards,
-  AreaCharts,
-  AreaTable,
   AreaTop,
-  AttendanceCards,
-  GpaCards,
-  UktCards,
   Ipk,
   TopProfil,
 } from "../../components";
-import AttendancCardsu from "../../components/dashboard/all";
 import TableKehadiran from "../../components/dashboard/TableKehadiran";
 import MainCard from "../../components/dashboard/MainCard/MainCard";
 import UktTable from "../../components/dashboard/UktTable"; // Import UktTable
