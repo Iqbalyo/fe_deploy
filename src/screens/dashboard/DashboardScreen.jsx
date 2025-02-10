@@ -23,7 +23,7 @@ const Dashboard = () => {
     <div className="content-area">
       <AreaTop />
       <TopProfil />
-      <h2>Rekap Presensi</h2>
+      <h2>Rekap</h2>
 
       {/* Bungkus dalam div dengan flexbox */}
       <div className="table-container">
