@@ -63,21 +63,7 @@ const MainCard = () => {
       {/* Card besar */}
       <div className="main-card">
         {/* Card pertama - Kiri */}
-        <div className="sub-card left-card">
-        <h3>Indeks Prestasi Kumulatif</h3>
-        {ipk ? (
-            <GpaCard
-              colors={["#e4e8ef", "#ff207d"]}
-              cardInfo={{
-             /*    title: "Indeks Prestasi Kumulatif", */
-                value: ipk,
-                text: "IPK",
-              }}
-            />
-          ) : (
-            <p>Loading IPK...</p>
-          )}
-        </div>
+        
 
         {/* Card kedua - Tengah */}
         <div className="sub-card center-card">
