@@ -24,7 +24,9 @@ const TopProfil = () => {
       alignItems="center"
       justifyContent="space-between"
       padding={2}
-      sx={{ backgroundColor: "#ffffff", borderRadius: "8px" }}
+      sx={{ backgroundColor: "#ffffff", borderRadius: "8px",
+        width: "50%" 
+       }}
     >
       <Typography variant="h5" sx={{ fontWeight: "bold", marginRight: "auto" }}>
         Universitas Dinamika Bangsa
