@@ -13,7 +13,9 @@
   
   .top-section {
     display: flex;
-    align-items: center; /* Agar sejajar secara vertikal */
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: flex-start; /* Agar sejajar secara vertikal */
     gap: 20px; /* Atur jarak antara TopProfil dan MaincardIpk */
   }
   
