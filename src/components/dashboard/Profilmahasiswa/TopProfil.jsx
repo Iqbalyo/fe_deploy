@@ -25,7 +25,8 @@ const TopProfil = () => {
       justifyContent="space-between"
       padding={2}
       sx={{ backgroundColor: "#ffffff", borderRadius: "8px",
-        width: "50%" 
+        width: "50%" ,
+        marginLeft: "auto" // Menggeser ke kanan
        }}
     >
       <Typography variant="h5" sx={{ fontWeight: "bold", marginRight: "auto" }}>
