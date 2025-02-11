@@ -2,6 +2,7 @@ import { useState } from "react";
 import {
   AreaTop,
   Ipk,
+  MaincardIpk,
   TopProfil,
 } from "../../components";
 import TableKehadiran from "../../components/dashboard/TableKehadiran";
@@ -16,6 +17,7 @@ const Dashboard = () => {
     <div className="content-area">
       {/* <AreaTop /> */}
       <TopProfil />
+      <MaincardIpk/>
       <h2>Informasi kehadiran</h2>
 
       {/* Bungkus dalam div dengan flexbox */}

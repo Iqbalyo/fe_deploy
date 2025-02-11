@@ -10,6 +10,7 @@ export { default as AttendanceList } from "./dashboard/AttendanceDetail/Attendan
 export { default as Ipk } from "./dashboard/ipk/IpkChart";
 export { default as InformasiUkt } from "./dashboard/informasiUkt/UktTable";
 export { default as Maincard } from "./dashboard/MainCard/MainCard"
+export { default as MaincardIpk } from "./dashboard/MainCardIpk/MainCardIpk"
 export { default as TableJadwal } from "./dashboard/TableJadwal/TableJadwal"
 export { default as DetailKehadiran } from "./dashboard/DetailKehadiran/DetailKehadiran"
 export { default as TopProfil } from "./dashboard/Profilmahasiswa/TopProfil"
