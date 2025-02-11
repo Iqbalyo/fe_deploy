@@ -22,7 +22,7 @@ const Dashboard = () => {
       <MaincardIpk/>
       <TopProfil />
       </div>
-      <h2>Informasi kehadiran</h2>
+ 
 
       {/* Bungkus dalam div dengan flexbox */}
       <div className="table-container">
