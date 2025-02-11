@@ -19,7 +19,7 @@ const CustomTooltip = ({ active, payload }) => {
 
     return (
       <div className="custom-tooltip">
-        <p>{`${payload[0].payload.semester}`}</p>
+        <p>{` ${payload[0].payload.semester}`}</p>
         <p>{`IPS: ${ips}`}</p>
         <p className="tooltip-message">{message}</p>
       </div>
