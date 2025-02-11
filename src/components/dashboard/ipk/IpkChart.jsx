@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer, LineChart, Line } from "recharts";
 import "./Ipk.scss";
 
 // Tooltip kustom untuk menambahkan informasi tambahan
@@ -29,8 +29,6 @@ const CustomTooltip = ({ active, payload }) => {
   return null;
 };
 
-
-
 const IpkChart = () => {
   const [ipkData, setIpkData] = useState([]); // State untuk menyimpan data IPS
   const nim = localStorage.getItem("nim"); // Ambil NIM dari localStorage
@@ -58,23 +56,24 @@ const IpkChart = () => {
         .catch((error) => console.error("Error fetching IPS data:", error));
     }
   }, [nim]);
-  
-
 
   return (
     <div className="ipk-chart-container">
       <h3 className="ipk-title">Grafik Perkembangan IPS</h3>
       <ResponsiveContainer width="100%" height={400}>
-        <BarChart
-          data={ipkData} // Gunakan data dari state
-          margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-        >
+        {/* Gabungkan LineChart dan BarChart */}
+        <LineChart data={ipkData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="semester" /> {/* Menampilkan label semester */}
           <YAxis domain={[2.5, 4.0]} /> {/* Rentang nilai IPS */}
           <Tooltip content={<CustomTooltip />} />
-          <Bar dataKey="ips" fill="#ff207d" /> {/* Bar untuk nilai IPS */}
-        </BarChart>
+          
+          {/* Grafik Garis */}
+          <Line type="monotone" dataKey="ips" stroke="#8884d8" activeDot={{ r: 8 }} />
+
+          {/* Grafik Batang */}
+          <Bar dataKey="ips" fill="#ff207d" />
+        </LineChart>
       </ResponsiveContainer>
     </div>
   );
