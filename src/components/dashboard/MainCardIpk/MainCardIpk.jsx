@@ -58,7 +58,7 @@ const MainCard = () => {
   }, [nim]);
 
   return (
-    <div className="main-card-container">
+    <div>
       {/* Card besar */}
       <div className="main-card">
         {/* Card pertama - Kiri */}
