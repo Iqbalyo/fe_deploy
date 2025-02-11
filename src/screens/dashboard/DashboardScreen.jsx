@@ -19,8 +19,8 @@ const Dashboard = () => {
 
       <div className="top-section">
 
-      <TopProfil />
       <MaincardIpk/>
+      <TopProfil />
       </div>
       <h2>Informasi kehadiran</h2>
 
