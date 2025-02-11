@@ -86,7 +86,7 @@ const GpaCards = ({onSemesterChange}) => { //todo,onSemester sebagai props,untuk
                   {/* IPK di samping NIM */}
                   <p style={{ margin: "8px 0", fontSize: "16px", color: "#555" }}>IPK: {ipk}</p> {/* Tampilkan IPK */}
                   {/* Semester Terakhir */}
-                  <p style={{ margin: 0, fontSize: "14px", color: "#555" }}>Semester: {semester || "Loading semester..."}</p>
+                  <p style={{ margin: 0, fontSize: "14px", color: "#555" }}> {semester || "Loading semester..."}</p>
                 </div>
               </div>
               
