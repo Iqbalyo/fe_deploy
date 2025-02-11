@@ -4,7 +4,7 @@ import MainCard from "../../components/dashboard/MainCard/MainCard";
 const IpkMahasiswa = () => {
   return (
     <div className="content-area">
-       <AreaTop/>
+       {/* <AreaTop/> */}
        <MainCard/>
 <IpkChart/>
       

@@ -5,7 +5,7 @@ import TableKehadiran from "../../components/dashboard/TableKehadiran";
 const InformasiKehadiran = () => {
   return (
     <div className="content-area">
-      <AreaTop />
+      {/* <AreaTop /> */}
     
       <TableKehadiran />
       <h1>Jadwal Perkuliahan </h1>
