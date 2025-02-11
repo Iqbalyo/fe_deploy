@@ -14,7 +14,7 @@ const Dashboard = () => {
 
   return (
     <div className="content-area">
-      <AreaTop />
+      {/* <AreaTop /> */}
       <TopProfil />
       <h2>Informasi kehadiran</h2>
 
