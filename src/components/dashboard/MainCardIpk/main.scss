@@ -1,0 +1,62 @@
+.main-card-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .main-card {
+    display: flex;
+    flex-wrap: wrap; // Agar responsif di layar kecil
+    gap: 16px;
+    width: 100%;
+    max-width: 1000px; // Batasi lebar maksimum
+  }
+  
+  .sub-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  // Ukuran untuk masing-masing kartu
+  .left-card {
+    flex: 1; // Ambil 1 bagian dari flexbox
+    max-width: 280px; // Membatasi lebar IPK agar tidak terlalu besar
+  }
+  
+  .center-card {
+    flex: 2; // Lebih besar dari left-card
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .right-card {
+    flex: 1; // Sama dengan left-card
+  }
+  
+  // Menyesuaikan ukuran di layar kecil
+  @media screen and (max-width: 768px) {
+    .main-card {
+      flex-direction: column;
+    }
+  
+    .left-card, .center-card, .right-card {
+      max-width: 100%; // Agar tidak terlalu kecil di layar kecil
+    }
+  }
+  
+  // Styling tambahan untuk IPK
+  .gpa-card {
+    background: linear-gradient(to right, #e4e8ef, #ff207d);
+    color: white;
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    max-width: 200px; // Agar tidak terlalu besar
+    margin: auto;
+  }
+  

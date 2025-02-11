@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../MainCard/MainCard.scss"; // Styling utama untuk MainCard
+import "./main.scss"; // Styling utama untuk MainCard
 
 import GpaCard from "../IPSComponents/GpaCard";
 
