@@ -16,8 +16,12 @@ const Dashboard = () => {
   return (
     <div className="content-area">
       {/* <AreaTop /> */}
+
+      <div className="top-section">
+
       <TopProfil />
       <MaincardIpk/>
+      </div>
       <h2>Informasi kehadiran</h2>
 
       {/* Bungkus dalam div dengan flexbox */}
