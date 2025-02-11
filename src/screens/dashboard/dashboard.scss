@@ -15,7 +15,7 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    /* Agar sejajar secara vertikal */
+    align-items: flex-start; /* Agar sejajar secara vertikal */
     gap: 20px; /* Atur jarak antara TopProfil dan MaincardIpk */
   }
   
