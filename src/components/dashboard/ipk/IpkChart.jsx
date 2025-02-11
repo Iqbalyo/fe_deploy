@@ -69,7 +69,12 @@ const IpkChart = () => {
           <XAxis dataKey="semester" />
           <YAxis domain={[2.5, 4.0]} />
           <Tooltip content={<CustomTooltip />} />
-          <Bar dataKey="ips" fill="#ff207d" />
+          <Bar
+            dataKey="ips"
+            fill="#ff207d"
+            isAnimationActive={true} // Aktifkan animasi
+            animationDuration={1000} // Durasi animasi dalam milidetik
+          />
           <Line type="monotone" dataKey="ips" stroke="#ff7300" />
         </ComposedChart>
       </ResponsiveContainer>
