@@ -1,6 +1,6 @@
 .kehadiran-container {
   width: 100%;
-  max-width: 400px;
+  max-width: 600px; /* Lebih lebar agar lebih nyaman */
   margin: 0 auto;
   padding: 20px;
   background: #fff;
@@ -10,7 +10,7 @@
 }
 
 .kehadiran-title {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: bold;
   margin-bottom: 15px;
 }
@@ -18,13 +18,12 @@
 .kehadiran-list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px; /* Gap lebih lebar antar item */
 }
 
 .kehadiran-item {
   display: flex;
   justify-content: space-between;
-  flex-direction: column;
   padding: 12px;
   border-radius: 5px;
   background: #f9f9f9;
@@ -32,7 +31,7 @@
   text-align: left;
   cursor: pointer;
   transition: background 0.2s ease-in-out;
-
+  
   &:hover {
     background: #e9ecef;
   }
@@ -41,13 +40,13 @@
 .mata-kuliah {
   font-weight: bold;
   color: #333;
+  flex-grow: 1; /* Agar mata kuliah mengambil ruang yang tersisa */
 }
 
 .info-kehadiran {
   display: flex;
-  flex-direction: column;
-  gap: 5px;
-  margin-top: 5px;
+  gap: 10px; /* Beri jarak antar elemen */
+  align-items: center;
 }
 
 .hadir,
@@ -62,15 +61,15 @@
 }
 
 .hadir {
-  background: #28a745; // Hijau
+  background: #28a745; /* Hijau */
 }
 
 .izin {
-  background: #007bff; // Biru
+  background: #007bff; /* Biru */
 }
 
 .alpha {
-  background: #dc3545; // Merah
+  background: #dc3545; /* Merah */
 }
 
 .no-data {
