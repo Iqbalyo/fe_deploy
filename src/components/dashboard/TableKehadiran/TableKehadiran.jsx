@@ -27,11 +27,16 @@ const TableKehadiran = () => {
               className="kehadiran-item"
               onClick={() => navigate(`/informasi-kehadiran/${row.matakuliah_nama}`)}
             >
+              {/* Mata Kuliah */}
               <span className="mata-kuliah">{row.matakuliah_nama}</span>
+
+              {/* Informasi Kehadiran di Sebelah Kanan */}
               <div className="info-kehadiran">
                 <span className="hadir">Hadir: {row.hadir}</span>
-                <span className="izin">Izin: {row.izin}</span>
-                <span className="alpha">Tanpa Keterangan: {row.tanpaKeterangan}</span>
+                {row.izin > 0 && <span className="izin">Izin: {row.izin}</span>}
+                {row.tanpaKeterangan > 0 && (
+                  <span className="alpha">Tanpa Keterangan: {row.tanpaKeterangan}</span>
+                )}
               </div>
             </div>
           ))
