@@ -36,7 +36,7 @@ const UktTable = () => {
 
   return (
     <div className="ukt-container">
-      <h2 className="ukt-title">Status Pembayaran Kuliah</h2>
+      <h2 className="ukt-title">Pembayaran Uang Kuliah</h2>
       <div className="ukt-list">
         {data.map((item, index) => (
           <div key={index} className="ukt-item">
