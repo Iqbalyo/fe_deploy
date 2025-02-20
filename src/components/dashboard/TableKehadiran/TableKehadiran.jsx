@@ -33,9 +33,9 @@ const TableKehadiran = () => {
               {/* Informasi Kehadiran di Sebelah Kanan */}
               <div className="info-kehadiran">
                 <span className="hadir">{row.hadir} x Hadir</span>
-                {row.izin > 0 && <span className="izin">Izin: {row.izin}</span>}
+                {row.izin > 0 && <span className="izin">{row.izin} x Izin</span>}
                 {row.tanpaKeterangan > 0 && (
-                  <span className="alpha">Tanpa Keterangan: {row.tanpaKeterangan}</span>
+                  <span className="alpha">{row.tanpaKeterangan} x Tanpa Keterangan</span>
                 )}
               </div>
             </div>

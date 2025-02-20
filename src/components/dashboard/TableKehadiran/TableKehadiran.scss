@@ -49,28 +49,39 @@
   align-items: center;
 }
 
+.hadir {
+  color: #28a745;
+}
+
+.izin {
+  color: #007bff;
+}
+
+.alpha {
+  color: #dc3545;
+}
+
 .hadir,
 .izin,
 .alpha {
   padding: 5px 10px;
   border-radius: 5px;
   font-weight: bold;
-  color: #28a745;
+ // Ini di-override oleh aturan di atasnya
   display: inline-block;
   width: fit-content;
 }
-
 // .hadir {
 //   background: #28a745; /* Hijau */
 // }
 
-.izin {
-  background: #007bff; /* Biru */
-}
+// .izin {
+//   background: #007bff; /* Biru */
+// }
 
-.alpha {
-  background: #dc3545; /* Merah */
-}
+// .alpha {
+//   background: #dc3545; /* Merah */
+// }
 
 .no-data {
   font-size: 16px;
