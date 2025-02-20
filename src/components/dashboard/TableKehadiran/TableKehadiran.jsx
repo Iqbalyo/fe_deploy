@@ -32,7 +32,7 @@ const TableKehadiran = () => {
 
               {/* Informasi Kehadiran di Sebelah Kanan */}
               <div className="info-kehadiran">
-                <span className="hadir">Hadir: {row.hadir}</span>
+                <span className="hadir">{row.hadir} x Hadir</span>
                 {row.izin > 0 && <span className="izin">Izin: {row.izin}</span>}
                 {row.tanpaKeterangan > 0 && (
                   <span className="alpha">Tanpa Keterangan: {row.tanpaKeterangan}</span>
