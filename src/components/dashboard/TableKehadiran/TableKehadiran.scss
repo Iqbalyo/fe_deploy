@@ -1,8 +1,8 @@
 .kehadiran-container {
   width: 100%;
- // Increased from 600px
+  max-width: 300px; // Increased from 600px
   margin: 0 auto;
-  padding: 10px;
+  padding: 20px;
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -28,7 +28,7 @@
   padding: 16px; // Increased padding
   border-radius: 5px;
   background: #f9f9f9;
-  font-size: 13px;
+  font-size: 15px;
   cursor: pointer;
   transition: background 0.2s ease-in-out;
   min-height: 60px; // Added minimum height
@@ -58,7 +58,7 @@
   flex: 1;
   white-space: normal;
   word-wrap: break-word;
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.4; // Better line height for readability
   padding-right: 20px; // Added padding from status
 }
