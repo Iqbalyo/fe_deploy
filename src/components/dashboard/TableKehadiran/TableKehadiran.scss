@@ -1,6 +1,6 @@
 .kehadiran-container {
   width: 100%;
-  max-width: 300px; // Increased from 600px
+  max-width: 800px;
   margin: 0 auto;
   padding: 20px;
   background: #fff;
@@ -12,7 +12,7 @@
 .kehadiran-title {
   font-size: 24px;
   font-weight: bold;
-  margin-bottom: 20px; // Increased spacing
+  margin-bottom: 20px;
 }
 
 .kehadiran-list {
@@ -24,14 +24,13 @@
 .kehadiran-item {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  padding: 16px; // Increased padding
+  align-items: center; // Changed to center for better vertical alignment
+  padding: 16px;
   border-radius: 5px;
   background: #f9f9f9;
-  font-size: 15px;
+  font-size: 16px;
   cursor: pointer;
   transition: background 0.2s ease-in-out;
-  min-height: 60px; // Added minimum height
   
   &:hover {
     background: #e9ecef;
@@ -41,13 +40,14 @@
 .mata-kuliah-container {
   display: flex;
   align-items: center;
-  gap: 15px; // Increased gap between icon and text
-  flex: 2; // Takes up more space compared to info-kehadiran
+  gap: 15px;
+  flex: 2;
   min-width: 0;
+  max-width: 60%; // Membatasi lebar maksimum container mata kuliah
 }
 
 .user-icon {
-  font-size: 28px; // Slightly larger icon
+  font-size: 28px;
   color: #666;
   flex-shrink: 0;
 }
@@ -55,39 +55,37 @@
 .mata-kuliah {
   font-weight: bold;
   color: #333;
-  flex: 1;
-  white-space: normal;
-  word-wrap: break-word;
-  font-size: 15px;
-  line-height: 1.4; // Better line height for readability
-  padding-right: 20px; // Added padding from status
+  white-space: nowrap; // Mencegah text wrap
+  overflow: hidden; // Sembunyikan text yang overflow
+  text-overflow: ellipsis; // Tambahkan ... jika text terlalu panjang
+  padding-right: 20px;
 }
 
 .info-kehadiran {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 8px; // Increased gap
-  margin-left: 30px; // More space between text and status
-  flex: 1; // Takes up less space compared to mata-kuliah-container
-  min-width: 180px; // Minimum width for status container
+  gap: 8px;
+  margin-left: auto; // Menggunakan margin-left: auto untuk push ke kanan
+  flex: 0 0 auto; // Prevent shrinking and growing
+  min-width: 180px;
 }
 
 .status-group {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 8px; // Increased gap between status items
+  gap: 8px;
 }
 
 .hadir,
 .izin,
 .alpha {
-  padding: 6px 12px; // Increased padding
+  padding: 6px 12px;
   border-radius: 5px;
   font-weight: bold;
   white-space: nowrap;
-  min-width: 140px; // Minimum width for status items
+  min-width: 140px;
   text-align: right;
 }
 
@@ -108,4 +106,26 @@
   color: #777;
   margin-top: 15px;
   padding: 20px;
+}
+
+// Media query untuk tampilan mobile
+@media (max-width: 768px) {
+  .mata-kuliah {
+    white-space: normal; // Biarkan text wrap di mobile
+    text-overflow: clip;
+  }
+  
+  .mata-kuliah-container {
+    max-width: 100%; // Full width di mobile
+  }
+  
+  .kehadiran-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .info-kehadiran {
+    margin-left: 43px; // Sejajar dengan text mata kuliah
+    margin-top: 10px;
+  }
 }
