@@ -1,6 +1,6 @@
 .kehadiran-container {
   width: 100%;
-  max-width: 800px;
+  max-width: 1000px; // Diperlebar dari 800px ke 1000px
   margin: 0 auto;
   padding: 20px;
   background: #fff;
@@ -24,11 +24,10 @@
 .kehadiran-item {
   display: flex;
   justify-content: space-between;
-  align-items: center; // Changed to center for better vertical alignment
+  align-items: center;
   padding: 16px;
   border-radius: 5px;
   background: #f9f9f9;
-  font-size: 16px;
   cursor: pointer;
   transition: background 0.2s ease-in-out;
   
@@ -41,9 +40,9 @@
   display: flex;
   align-items: center;
   gap: 15px;
-  flex: 2;
+  flex: 3; // Memberikan lebih banyak ruang untuk mata kuliah
   min-width: 0;
-  max-width: 60%; // Membatasi lebar maksimum container mata kuliah
+  max-width: 70%; // Memperlebar maksimum container mata kuliah
 }
 
 .user-icon {
@@ -53,12 +52,11 @@
 }
 
 .mata-kuliah {
-  font-weight: bold;
+  font-weight: 500; // Sedikit lebih ringan dari bold
   color: #333;
-  white-space: nowrap; // Mencegah text wrap
-  overflow: hidden; // Sembunyikan text yang overflow
-  text-overflow: ellipsis; // Tambahkan ... jika text terlalu panjang
-  padding-right: 20px;
+  font-size: 15px; // Ukuran font yang lebih kecil
+  white-space: nowrap;
+  padding-right: 30px; // Menambah jarak dengan status
 }
 
 .info-kehadiran {
@@ -66,9 +64,8 @@
   flex-direction: column;
   align-items: flex-end;
   gap: 8px;
-  margin-left: auto; // Menggunakan margin-left: auto untuk push ke kanan
-  flex: 0 0 auto; // Prevent shrinking and growing
-  min-width: 180px;
+  flex: 1;
+  min-width: 160px; // Sedikit lebih kecil
 }
 
 .status-group {
@@ -81,12 +78,13 @@
 .hadir,
 .izin,
 .alpha {
-  padding: 6px 12px;
+  padding: 6px 10px; // Sedikit mengurangi padding
   border-radius: 5px;
-  font-weight: bold;
+  font-weight: 500; // Konsisten dengan mata kuliah
   white-space: nowrap;
-  min-width: 140px;
+  min-width: 130px; // Sedikit lebih kecil
   text-align: right;
+  font-size: 14px; // Ukuran font yang lebih kecil
 }
 
 .hadir {
@@ -110,13 +108,17 @@
 
 // Media query untuk tampilan mobile
 @media (max-width: 768px) {
+  .kehadiran-container {
+    padding: 15px;
+  }
+
   .mata-kuliah {
-    white-space: normal; // Biarkan text wrap di mobile
-    text-overflow: clip;
+    white-space: normal;
+    font-size: 14px;
   }
   
   .mata-kuliah-container {
-    max-width: 100%; // Full width di mobile
+    max-width: 100%;
   }
   
   .kehadiran-item {
@@ -125,7 +127,14 @@
   }
   
   .info-kehadiran {
-    margin-left: 43px; // Sejajar dengan text mata kuliah
+    margin-left: 43px;
     margin-top: 10px;
+  }
+
+  .hadir,
+  .izin,
+  .alpha {
+    font-size: 13px;
+    min-width: 120px;
   }
 }
