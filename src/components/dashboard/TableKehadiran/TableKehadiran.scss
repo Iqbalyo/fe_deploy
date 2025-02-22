@@ -1,6 +1,6 @@
 .kehadiran-container {
   width: 100%;
-  max-width: 600px; /* Lebih lebar agar lebih nyaman */
+  max-width: 600px;
   margin: 0 auto;
   padding: 20px;
   background: #fff;
@@ -18,17 +18,17 @@
 .kehadiran-list {
   display: flex;
   flex-direction: column;
-  gap: 15px; /* Gap lebih lebar antar item */
+  gap: 15px;
 }
 
 .kehadiran-item {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   padding: 12px;
   border-radius: 5px;
   background: #f9f9f9;
   font-size: 16px;
-  text-align: left;
   cursor: pointer;
   transition: background 0.2s ease-in-out;
   
@@ -37,23 +37,51 @@
   }
 }
 
+.mata-kuliah-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 0; // Prevents flex item from overflowing
+}
+
+.user-icon {
+  font-size: 24px;
+  color: #666;
+  flex-shrink: 0;
+}
+
 .mata-kuliah {
   font-weight: bold;
   color: #333;
-  flex-grow: 1; /* Agar mata kuliah mengambil ruang yang tersisa */
+  flex: 1;
+  white-space: normal;
+  word-wrap: break-word;
 }
 
-// .info-kehadiran {
-//   display: flex;
-//   gap: 10px; /* Beri jarak antar elemen */
-//   align-items: center;
-// }
-
 .info-kehadiran {
-  display: inline-flex; // Menggunakan inline-flex
-  gap: 10px;
-  align-items: center;
-  margin-left: auto; // Mendorong info-kehadiran ke kanan
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+  margin-left: 20px;
+  flex-shrink: 0;
+}
+
+.status-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+}
+
+.hadir,
+.izin,
+.alpha {
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  white-space: nowrap;
 }
 
 .hadir {
@@ -67,28 +95,6 @@
 .alpha {
   color: #dc3545;
 }
-
-.hadir,
-.izin,
-.alpha {
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-weight: bold;
- // Ini di-override oleh aturan di atasnya
-  display: inline-block;
-  width: fit-content;
-}
-// .hadir {
-//   background: #28a745; /* Hijau */
-// }
-
-// .izin {
-//   background: #007bff; /* Biru */
-// }
-
-// .alpha {
-//   background: #dc3545; /* Merah */
-// }
 
 .no-data {
   font-size: 16px;

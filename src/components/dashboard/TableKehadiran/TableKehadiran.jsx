@@ -27,16 +27,19 @@ const TableKehadiran = () => {
               className="kehadiran-item"
               onClick={() => navigate(`/informasi-kehadiran/${row.matakuliah_nama}`)}
             >
-              {/* Mata Kuliah */}
-              <span className="mata-kuliah">{row.matakuliah_nama}</span>
+              <div className="mata-kuliah-container">
+                <AccountCircleIcon className="user-icon" />
+                <span className="mata-kuliah">{row.matakuliah_nama}</span>
+              </div>
 
-              {/* Informasi Kehadiran di Sebelah Kanan */}
               <div className="info-kehadiran">
-                <span className="hadir">{row.hadir} x Hadir</span>
-                {row.izin > 0 && <span className="izin">{row.izin} x Izin</span>}
-                {row.tanpaKeterangan > 0 && (
-                  <span className="alpha">{row.tanpaKeterangan} x Tanpa Keterangan</span>
-                )}
+                <div className="status-group">
+                  <span className="hadir">{row.hadir} x Hadir</span>
+                  {row.izin > 0 && <span className="izin">{row.izin} x Izin</span>}
+                  {row.tanpaKeterangan > 0 && (
+                    <span className="alpha">{row.tanpaKeterangan} x Tanpa Keterangan</span>
+                  )}
+                </div>
               </div>
             </div>
           ))
