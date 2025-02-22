@@ -43,10 +43,17 @@
   flex-grow: 1; /* Agar mata kuliah mengambil ruang yang tersisa */
 }
 
+// .info-kehadiran {
+//   display: flex;
+//   gap: 10px; /* Beri jarak antar elemen */
+//   align-items: center;
+// }
+
 .info-kehadiran {
-  display: flex;
-  gap: 10px; /* Beri jarak antar elemen */
+  display: inline-flex; // Menggunakan inline-flex
+  gap: 10px;
   align-items: center;
+  margin-left: auto; // Mendorong info-kehadiran ke kanan
 }
 
 .hadir {
