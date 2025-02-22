@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAbsensiById } from "../../../store/action/userData.action";
 import { useNavigate } from "react-router-dom";
-import "./TableKehadiran.scss"; // Menggunakan SCSS
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import "./TableKehadiran.scss";
 
 const TableKehadiran = () => {
   const nim = localStorage.getItem("nim");
