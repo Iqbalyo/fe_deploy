@@ -4,7 +4,12 @@
     gap: 5px;  // Beri jarak antara tabel
     flex-wrap: wrap; // Supaya responsif di layar kecil
   }
-  .kehadiran-container, 
+  .kehadiran-container {
+    max-width: 700px;
+    min-width: 500px;
+  } 
+
+
   .ukt-container {
     flex: 1; // Membuat kedua tabel memiliki ukuran yang sama
     max-width: 400px; // Sesuaikan dengan ukuran yang diinginkan
