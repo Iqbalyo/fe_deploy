@@ -60,6 +60,7 @@ const Oke = () => {
             <TableCell>Nama Mata Kuliah</TableCell>
             <TableCell>Pertemuan Ke</TableCell>
             <TableCell>Status</TableCell>
+            <TableCell>Dosen</TableCell>
             <TableCell>Tanggal Kuliah</TableCell>
             <TableCell>Waktu</TableCell>
           </TableRow>
