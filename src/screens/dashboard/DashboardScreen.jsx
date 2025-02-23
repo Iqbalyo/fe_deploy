@@ -30,7 +30,6 @@ const Dashboard = () => {
         <UktTable />
       </div>
 
-      <h2>Informasi Akademik</h2>
       <MainCard />
       <Ipk />
     </div>
