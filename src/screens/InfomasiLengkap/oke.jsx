@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom'; // Impor useParams
+import { useParams } from 'react-router-dom';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography } from '@mui/material';
 
 const Oke = () => {
-  const { matakuliah_nama } = useParams(); // Ambil matakuliah_nama dari URL
-  const nim = localStorage.getItem('nim'); // Ambil NIM dari localStorage
+  const { matakuliah_nama } = useParams();
+  const nim = localStorage.getItem('nim');
   const [dataKehadiran, setDataKehadiran] = useState([]);
 
-  // Fungsi untuk memformat tanggal ke dalam format dd/mm/yyyy
   const formatDate = (date) => {
     let day = date.getDate();
-    let month = date.getMonth() + 1; // Bulan dimulai dari 0
+    let month = date.getMonth() + 1;
     let year = date.getFullYear();
 
-    // Tambahkan leading zero jika perlu
     day = day < 10 ? '0' + day : day;
     month = month < 10 ? '0' + month : month;
 
@@ -30,11 +28,17 @@ const Oke = () => {
         }
 
         const data = await response.json();
-        console.log("Data dari API:", data); // Log data dari API
+        
+        // Filter data berdasarkan NIM yang login dan status tidak null
+        const filteredData = data
+          .filter(item => item.nim === nim)
+          // Hanya tampilkan data dengan status yang valid (Hadir, Izin, Alpha)
+          .filter(item => {
+            const status = item.status?.toLowerCase();
+            return status === 'H' || status === 'I' || status === 'A';
+          });
 
-        // Filter data berdasarkan NIM yang login
-        const filteredData = data.filter(item => item.nim === nim);
-        console.log("Data setelah filter:", filteredData); // Log data setelah filter
+        console.log("Data setelah filter:", filteredData);
         setDataKehadiran(filteredData);
       } catch (error) {
         console.error("Error fetching kehadiran:", error);
@@ -46,7 +50,7 @@ const Oke = () => {
     } else {
       console.error("NIM tidak ditemukan di localStorage");
     }
-  }, [nim, matakuliah_nama]); // Tambahkan matakuliah_nama ke dalam dependency array
+  }, [nim, matakuliah_nama]);
 
   return (
     <TableContainer component={Paper}>
@@ -56,7 +60,6 @@ const Oke = () => {
       <Table>
         <TableHead>
           <TableRow>
-            {/* <TableCell>NIM</TableCell> */}
             <TableCell>Nama Mata Kuliah</TableCell>
             <TableCell>Pertemuan Ke</TableCell>
             <TableCell>Status</TableCell>
@@ -68,17 +71,21 @@ const Oke = () => {
           {dataKehadiran.length > 0 ? (
             dataKehadiran.map((row, index) => (
               <TableRow key={index}>
-                {/* <TableCell>{row.nim}</TableCell> */}
                 <TableCell>{row.matakuliah_nama}</TableCell>
                 <TableCell>{row.pertemuan_ke}</TableCell>
-                <TableCell>{row.status !== null ? row.status : 'A'}</TableCell> {/* Ganti null dengan 'A' */}
-                <TableCell>{row.pertemuan ? formatDate(new Date(row.pertemuan.tanggal_kuliah)) : 'N/A'}</TableCell> {/* Format tanggal */}
-                <TableCell>{row.pertemuan ? row.pertemuan.waktu : 'N/A'}</TableCell> {/* Cek apakah pertemuan ada */}
+                <TableCell>{row.status}</TableCell>
+                <TableCell>
+                  {row.pertemuan?.tanggal_kuliah ? 
+                    formatDate(new Date(row.pertemuan.tanggal_kuliah)) : 
+                    'N/A'
+                  }
+                </TableCell>
+                <TableCell>{row.pertemuan?.waktu || 'N/A'}</TableCell>
               </TableRow>
             ))
           ) : (
             <TableRow>
-              <TableCell colSpan={6} align="center">
+              <TableCell colSpan={5} align="center">
                 Tidak ada data kehadiran untuk NIM ini.
               </TableCell>
             </TableRow>
