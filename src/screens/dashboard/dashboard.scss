@@ -4,19 +4,13 @@
     gap: 5px;  // Beri jarak antara tabel
     flex-wrap: wrap; // Supaya responsif di layar kecil
   }
-  .kehadiran-container {
-    flex: 2; /* Memberikan lebih banyak ruang */
-    max-width: 700px; /* Lebarkan */
-    min-width: 500px; /* Agar tetap proporsional */
-    align-self: flex-start;
-}
-
-.ukt-container {
-    flex: 2; /* Kurangi lebar */
-    max-width: 350px;
-    min-width: 280px;
-    align-self: flex-start;
-}
+  .kehadiran-container, 
+  .ukt-container {
+    flex: 1; // Membuat kedua tabel memiliki ukuran yang sama
+    max-width: 400px; // Sesuaikan dengan ukuran yang diinginkan
+    align-self: flex-start; 
+  }
+  
   .top-section {
     display: flex;
     justify-content: space-between;
