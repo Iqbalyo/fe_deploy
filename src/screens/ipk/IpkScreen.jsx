@@ -6,7 +6,7 @@ const IpkMahasiswa = () => {
     <div className="content-area">
        {/* <AreaTop/> */}
       <MaincardIpk/>
-       <MainCard/>
+       {/* <MainCard/> */}
 <IpkChart/>
       
    
