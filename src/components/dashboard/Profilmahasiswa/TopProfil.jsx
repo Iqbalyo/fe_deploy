@@ -22,10 +22,10 @@ const TopProfil = () => {
     <Box
       display="flex"
       alignItems="center"
-      justifyContent="space-between"
+      justifyContent="flex-end"
       padding={2}
       sx={{ backgroundColor: "#ffffff", borderRadius: "8px",
-        width: "50%" ,
+        width: "100%" ,
         marginLeft: "auto" // Menggeser ke kanan
        }}
     >
