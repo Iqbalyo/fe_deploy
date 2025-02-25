@@ -28,9 +28,9 @@ const TopProfil = () => {
       <Box
         display="flex"
         alignItems="center"
-        justifyContent="space-between"
+        justifyContent="start"
         padding={2}
-        gap={2}
+        gap={1}
         sx={{ backgroundColor: "#ffffff", borderRadius: "8px", width: "100%" }}
       >
         {/* Hamburger menu */}
