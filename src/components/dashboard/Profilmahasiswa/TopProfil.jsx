@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Icon } from "semantic-ui-react";
-import { FaBars } from "react-icons/fa"; // Import hamburger icon dari react-icons
+import { FaBars } from "react-icons/fa"; // Import hamburger icon
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { useMediaQuery } from "@mui/material";
 
 const TopProfil = () => {
-  const [setMahasiswa] = useState(null); // State untuk data mahasiswa
+  const [setMahasiswa] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const nim = localStorage.getItem("nim"); 
+  const nim = localStorage.getItem("nim");
   const nama = localStorage.getItem("nama");
 
-  // Deteksi jika layar di bawah 762px
   const isMobile = useMediaQuery("(max-width: 762px)");
 
   useEffect(() => {
@@ -28,25 +27,25 @@ const TopProfil = () => {
       <Box
         display="flex"
         alignItems="center"
-        justifyContent="start"
+        justifyContent="space-between" // Pisahkan kiri & kanan
         padding={2}
-        gap={1}
         sx={{ backgroundColor: "#ffffff", borderRadius: "8px", width: "100%" }}
       >
-        {/* Hamburger menu */}
-        {isMobile && (
-          <FaBars
-            size={24}
-            style={{ cursor: "pointer", marginRight: "10px" }}
-            onClick={() => setSidebarOpen(!sidebarOpen)}
-          />
-        )}
+        {/* Bagian KIRI: Menu + UNAMA */}
+        <Box display="flex" alignItems="center" gap={1}>
+          {isMobile && (
+            <FaBars
+              size={24}
+              style={{ cursor: "pointer" }}
+              onClick={() => setSidebarOpen(!sidebarOpen)}
+            />
+          )}
+          <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+            {isMobile ? "UNAMA" : "Universitas Dinamika Bangsa"}
+          </Typography>
+        </Box>
 
-        {/* Ubah teks berdasarkan ukuran layar */}
-        <Typography variant="h5" sx={{ fontWeight: "bold" }}>
-          {isMobile ? "UNAMA" : "Universitas Dinamika Bangsa"}
-        </Typography>
-
+        {/* Bagian KANAN: Nama User & Icon */}
         <Box display="flex" alignItems="center">
           <Typography variant="body1" sx={{ fontWeight: "bold", marginRight: 1 }}>
             {nama || "Nama Tidak Ditemukan"}
@@ -55,7 +54,7 @@ const TopProfil = () => {
         </Box>
       </Box>
 
-      {/* Sidebar Menu */}
+      {/* Sidebar */}
       {sidebarOpen && (
         <Box
           sx={{
