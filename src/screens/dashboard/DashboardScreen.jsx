@@ -17,34 +17,26 @@ const Dashboard = () => {
 
 
   return (
-    <div className="dashboard-container">
-      {/* Tombol Toggle Sidebar */}
-      <button className="sidebar-toggle" onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
-        ☰
-      </button>
+    <div className="content-area">
+      {/* <AreaTop /> */}
 
-      {/* Sidebar dengan class dinamis */}
-      <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
+      <div className="top-section">
 
-      <div className="content-area">
-        <div className="top-section">
-          <MaincardIpk/>
-          <TopProfil />
-        </div>
-        <br />
-
-        <div className="table-container">
-          <TableKehadiran />
-          <UktTable />
-        </div>
-
-        <MainCard />
-        <Ipk />
+      <MaincardIpk/>
+      <TopProfil />
       </div>
+ <br />
+
+      {/* Bungkus dalam div dengan flexbox */}
+      <div className="table-container">
+        <TableKehadiran />
+        <UktTable />
+      </div>
+
+      <MainCard />
+      <Ipk />
     </div>
   );
 };
-
-
 
 export default Dashboard;
