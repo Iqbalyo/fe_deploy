@@ -29,6 +29,7 @@ const TopProfil = () => {
         display="flex"
         alignItems="center"
         justifyContent="space-between"
+        padding={2}
         gap={2}
         sx={{ backgroundColor: "#ffffff", borderRadius: "8px", width: "100%" }}
       >
