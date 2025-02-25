@@ -8,11 +8,11 @@ import { Provider } from 'react-redux'
 import store from './../src/store'
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <ThemeProvider>
-    <Provider store={store()}>
-    <SidebarProvider>
-      <App />
-    </SidebarProvider>
-    </Provider>
-  </ThemeProvider>
+  <Provider store={store}>
+    <ThemeProvider>
+      <SidebarProvider>
+        <App />
+      </SidebarProvider>
+    </ThemeProvider>
+  </Provider>
 );
