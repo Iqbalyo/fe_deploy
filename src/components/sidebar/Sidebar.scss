@@ -11,7 +11,7 @@
   flex-direction: column;
   z-index: 999;
   transition: var(--default-transition);
-  overflow-y: scroll;
+  overflow-y: auto;
 
   &::-webkit-scrollbar {
     width: 6px;
@@ -154,7 +154,7 @@
     }
   }
 
-  .mennu-link-icon{
+  .menu-link-icon{
     display: flex;
     align-items: center;
   }

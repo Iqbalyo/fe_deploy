@@ -69,6 +69,7 @@ const Sidebar = () => {
                 className={`menu-link ${
                   location.pathname === "/" ? "active" : ""
                 }`}
+                onClick={() => closeSidebar()} 
               >
                 <span className="menu-link-icon">
                   <MdOutlineGridView size={18} />
