@@ -23,7 +23,7 @@ const Sidebar = () => {
     if (
       navbarRef.current &&
       !navbarRef.current.contains(event.target) &&
-      event.target.className !== "sidebar-open-btn"
+      !event.target.classList.contains("sidebar-toggle-btn")
     ) {
       closeSidebar();
     }
