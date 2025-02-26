@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { useLocation, Link } from "react-router-dom";
-import { SidebarContext } from "../../context/SidebarContext"; // Import SidebarContext
+import { SidebarContext } from "../../context/SidebarContext";
+// import { SidebarContext } from "../../context/SidebarContext"; // Import SidebarContext
 import { MdOutlineAttachMoney, MdOutlineClose, MdOutlineGridView, MdOutlinePeople, MdSchool } from "react-icons/md";
 import Logounama from "../../assets/images/unama.png";
 import "./Sidebar.scss";

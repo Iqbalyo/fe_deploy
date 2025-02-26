@@ -4,7 +4,7 @@ import { FaBars } from "react-icons/fa"; // Import hamburger icon
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { useMediaQuery } from "@mui/material";
-import { SidebarContext } from "../../sidebar/SidebarContext";
+import { SidebarContext } from "../../../context/SidebarContext";
 
 const TopProfil = () => {
   const { openSidebar } = useContext(SidebarContext); // Ambil fungsi openSidebar
