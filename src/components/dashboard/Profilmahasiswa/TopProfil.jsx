@@ -54,27 +54,8 @@ const TopProfil = () => {
         </Box>
       </Box>
 
-      {/* Sidebar */}
-      {sidebarOpen && (
-        <Box
-          sx={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "250px",
-            height: "100%",
-            backgroundColor: "#ffffff",
-            boxShadow: "2px 0px 5px rgba(0,0,0,0.2)",
-            padding: "20px",
-            zIndex: 1000,
-          }}
-        >
-          <Typography variant="h6" sx={{ marginBottom: "20px" }}>
-            Menu Sidebar
-          </Typography>
-          {/* Tambahkan item menu di sini */}
-        </Box>
-      )}
+    
+    
     </>
   );
 };
