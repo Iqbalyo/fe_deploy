@@ -38,7 +38,7 @@ const TopProfil = () => {
             <FaBars
               size={24}
               style={{ cursor: "pointer" }}
-              onClick={() => setSidebarOpen(!sidebarOpen)}
+              onClick={openSidebar} // Panggil openSidebar saat diklik
             />
           )}
           <Typography variant="h5" sx={{ fontWeight: "bold" }}>
