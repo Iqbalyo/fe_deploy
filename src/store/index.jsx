@@ -1,9 +1,8 @@
 import { createStore, applyMiddleware, compose } from "redux";
-import * as thunk from "redux-thunk";
-
-// import thunk from "redux-thunk"; // Tidak perlu destructuring {}
+import thunk from "redux-thunk"; // TANPA destructuring {}
 import reducer from "./reducer/index";
 
-const store = createStore(reducer, compose(applyMiddleware(thunk)));
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
 
-export default store; // Ekspor store sebagai instance
+export default store;
