@@ -4,10 +4,11 @@ import { FaBars } from "react-icons/fa"; // Import hamburger icon
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { useMediaQuery } from "@mui/material";
+import { SidebarContext } from "../../sidebar/SidebarContext";
 
 const TopProfil = () => {
+  const { openSidebar } = useContext(SidebarContext); // Ambil fungsi openSidebar
   const [setMahasiswa] = useState(null);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
   const nim = localStorage.getItem("nim");
   const nama = localStorage.getItem("nama");
 

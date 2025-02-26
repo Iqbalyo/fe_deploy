@@ -13,9 +13,7 @@ import Logounama from "../../assets/images/unama.png";
 import "./Sidebar.scss";
 
 const Sidebar = () => {
-  const { theme } = useContext(ThemeContext);
-  const { isSidebarOpen, closeSidebar } = useContext(SidebarContext);
-  const navbarRef = useRef(null);
+  const { isSidebarOpen, closeSidebar } = useContext(SidebarContext); // Ambil state & fungsi dari context
   const location = useLocation(); // Gunakan useLocation
 
   // Fungsi untuk menutup sidebar jika diklik di luar area
