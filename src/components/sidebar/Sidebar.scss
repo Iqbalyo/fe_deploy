@@ -28,10 +28,18 @@
   }
 
   // toggling this class helps to hide/unhide the sidebar
-  &.sidebar-show{
+  .sidebar-show {
+    transform: translateX(0);
+  }
 
-        transform: translateX(0);
+  @media screen and (max-width: 768px) {
+    .sidebar {
+      transform: translateX(-100%);
+    }
     
+    .sidebar.sidebar-show {
+      transform: translateX(0);
+    }
   }
 
   // showing icons only on sidebar
