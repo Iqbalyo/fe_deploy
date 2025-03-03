@@ -6,19 +6,27 @@ import { FaBars } from "react-icons/fa";
 import { SidebarContext } from "../../../context/SidebarContext";
 
 const TopProfil = () => {
-  const { openSidebar } = useContext(SidebarContext);
+  const { openSidebar } = useContext(SidebarContext); // Gunakan Context
+  const [setMahasiswa] = useState(null);
   const nim = localStorage.getItem("nim");
   const nama = localStorage.getItem("nama");
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 762);
 
   useEffect(() => {
+    if (nim) {
+      fetch(`https://be-deploy-sage.vercel.app/api/mahasiswa/${nim}`)
+        .then((response) => response.json())
+        .then((data) => setMahasiswa(data))
+        .catch((error) => console.error("Error fetching mahasiswa data:", error));
+    }
+
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
+      setIsMobile(window.innerWidth <= 762);
     };
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [nim]);
 
   return (
     <Box
@@ -30,7 +38,9 @@ const TopProfil = () => {
     >
       <Box display="flex" alignItems="center">
         {isMobile && (
-          <FaBars size={24} style={{ marginRight: 10, cursor: "pointer" }} onClick={openSidebar} />
+          <FaBars size={24} style={{ marginRight: 10, cursor: "pointer" }}
+          onClick={openSidebar} // Tambahkan event ini
+           />
         )}
         <Typography variant="h5" sx={{ fontWeight: "bold" }}>
           {isMobile ? "UNAMA" : "Universitas Dinamika Bangsa"}
