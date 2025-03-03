@@ -3,7 +3,7 @@ import { Icon } from "semantic-ui-react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { FaBars } from "react-icons/fa";
-import { SidebarContext } from "../../../context/SidebarContext";
+import { SidebarContext } from "../../context/SidebarContext"; // Import Context
 
 const TopProfil = () => {
   const { openSidebar } = useContext(SidebarContext); // Gunakan Context
@@ -38,9 +38,11 @@ const TopProfil = () => {
     >
       <Box display="flex" alignItems="center">
         {isMobile && (
-          <FaBars size={24} style={{ marginRight: 10, cursor: "pointer" }}
-          onClick={openSidebar} // Tambahkan event ini
-           />
+          <FaBars 
+            size={24} 
+            style={{ marginRight: 10, cursor: "pointer" }} 
+            onClick={openSidebar} // Tambahkan event ini
+          />
         )}
         <Typography variant="h5" sx={{ fontWeight: "bold" }}>
           {isMobile ? "UNAMA" : "Universitas Dinamika Bangsa"}
