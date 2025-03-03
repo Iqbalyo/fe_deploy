@@ -3,7 +3,7 @@ import { Icon } from "semantic-ui-react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { FaBars } from "react-icons/fa";
-import { SidebarContext } from "../../context/SidebarContext"; // Import Context
+import { SidebarContext } from "../../../context/SidebarContext";
 
 const TopProfil = () => {
   const { openSidebar } = useContext(SidebarContext); // Gunakan Context
