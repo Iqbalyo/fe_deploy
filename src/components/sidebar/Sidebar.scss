@@ -29,9 +29,9 @@
 
   // toggling this class helps to hide/unhide the sidebar
   &.sidebar-show{
-    @media(max-width: 768px){
+
         transform: translateX(0);
-    }
+    
   }
 
   // showing icons only on sidebar
