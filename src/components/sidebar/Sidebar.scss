@@ -9,9 +9,10 @@
   box-shadow: rgba(100, 100, 111, 0.1) 0px 7px 29px 0px;
   display: flex;
   flex-direction: column;
-  z-index: 999;
-  transition: var(--default-transition);
-  overflow-y: auto;
+  z-index: 1000;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(-100%);
+  // overflow-y: auto;
 
   &::-webkit-scrollbar {
     width: 6px;

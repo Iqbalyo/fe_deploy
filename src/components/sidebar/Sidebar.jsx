@@ -39,8 +39,7 @@ const Sidebar = () => {
   return (
     <nav
       className={`sidebar ${isSidebarOpen ? "sidebar-show" : ""}`}
-      ref={navbarRef}
-    >
+      ref={navbarRef}>
       <div className="sidebar-top">
         <div className="sidebar-brand">
           <img
