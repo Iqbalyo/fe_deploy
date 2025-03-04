@@ -72,8 +72,8 @@
 .info-container {
   display: flex;
   align-items: center;
-  gap: 16px; /* Jarak antara foto dan teks */
-  /* Supaya teks rata kiri */
+  gap: 54px; /* Jarak antara foto dan teks */
+  text-align: left; /* Supaya teks rata kiri */
 }
 
 .student-avatar {
@@ -84,18 +84,9 @@
 }
 
 .info-text {
-  display: grid;
-  grid-template-columns: 120px 1fr; // Kolom pertama untuk label, kedua untuk nilai
-  gap: 4px 12px; // Jarak antar elemen
-  
-  h1, p {
-    margin: 0;
-    font-size: 14px;
-  }
-
-  h1 {
-    font-weight: bold;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Jarak antar teks */
 }
 
 .student-name {
