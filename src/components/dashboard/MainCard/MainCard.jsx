@@ -10,6 +10,7 @@ const MainCard = () => {
   const [mahasiswa, setMahasiswa] = useState(null);
   const [ipk, setIpk] = useState(null);
   const [semester, setSemester] = useState(null);
+  const [jurusan, setJurusan] = useState(""); // ⬅️ Tambahkan state jurusan
   const nama = localStorage.getItem("nama");
 
   useEffect(() => {
@@ -46,7 +47,20 @@ const MainCard = () => {
           } else {
             setSemester("Data semester tidak tersedia");
           }
-        });
+        })
+        .catch((error) => console.error("Error fetching semester data:", error));
+
+      // ⬇️ Fetch Jurusan berdasarkan nim
+      fetch(`https://be-deploy-sage.vercel.app/monitoring/unama/v1/aktivitas_kuliahs/${nim}`)
+        .then((response) => response.json())
+        .then((data) => {
+          if (data && data.jurusan_nama) {
+            setJurusan(data.jurusan_nama);
+          } else {
+            setJurusan("Tidak Diketahui");
+          }
+        })
+        .catch((error) => console.error("Error fetching jurusan:", error));
     }
   }, [nim]);
 
@@ -76,6 +90,10 @@ const MainCard = () => {
                   <Table.Row>
                     <Table.Cell><strong>Semester</strong></Table.Cell>
                     <Table.Cell>{semester || "Loading semester..."}</Table.Cell>
+                  </Table.Row>
+                  <Table.Row>
+                    <Table.Cell><strong>Jurusan</strong></Table.Cell>
+                    <Table.Cell>{jurusan}</Table.Cell> {/* ⬅️ Tambahkan Jurusan */}
                   </Table.Row>
                 </Table.Body>
               </Table>
