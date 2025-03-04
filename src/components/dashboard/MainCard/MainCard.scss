@@ -1,51 +1,45 @@
+.sub-card {
+  flex: 1; /* Membagi ukuran sama besar */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid #e0e0e0;
 
-  
+  &:last-child {
+    border-right: none; /* Hilangkan garis kanan pada card terakhir */
+  }
+}
 
-  
-  .sub-card {
-    flex: 1; /* Membagi ukuran sama besar */
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-right: 1px solid #e0e0e0;
-  
-    &:last-child {
-      border-right: none; /* Hilangkan garis kanan pada card terakhir */
-    }
-  }
-  
-  .left-card {
-    background-color: #f4f6f8;
-  }
-  
-  .center-card {
-    background-color: #e8f0fe;
+.left-card {
+  background-color: #f4f6f8;
+}
 
-    padding: 16px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px
-  }
-  
-  .right-card {
-    background-color: #f4f6f8;
-  
-  }
-  
-  h3 {
-    margin: 0 0 10px;
-    font-size: 18px;
-    color: #333333;
-  }
-  
-  p {
-    margin: 0;
-    font-size: 14px;
-    color: #666666;
-  }
-  
-  /* Tambahkan styling untuk GpaCard */
+.center-card {
+  background-color: #e8f0fe;
+  padding: 16px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.right-card {
+  background-color: #f4f6f8;
+}
+
+h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  color: #333333;
+}
+
+p {
+  margin: 0;
+  font-size: 14px;
+  color: #666666;
+}
+
+/* Styling untuk GpaCard */
 .area-card {
   display: flex;
   justify-content: space-between; /* Pisahkan elemen kiri dan kanan */
@@ -63,8 +57,7 @@
   margin-left: 20px; /* Beri jarak dengan area kiri */
 }
 
-
-//card ke dua
+/* Card kedua */
 .center-card {
   background-color: #e8f0fe;
 }
@@ -72,7 +65,7 @@
 .info-container {
   display: flex;
   align-items: center;
-  gap: 54px; /* Jarak antara foto dan teks */
+  gap: 20px; /* Jarak antara foto dan teks */
   text-align: left; /* Supaya teks rata kiri */
 }
 
@@ -83,10 +76,11 @@
   object-fit: cover; /* Untuk memastikan gambar tidak terdistorsi */
 }
 
+/* Styling untuk teks informasi mahasiswa */
 .info-text {
   display: grid;
-  grid-template-columns: auto 1fr; /* Kolom untuk label dan nilai */
-  gap: 4px 12px; /* Jarak antara label dan nilai */
+  grid-template-columns: 120px auto; /* Kolom pertama untuk label, kedua untuk nilai */
+  gap: 8px 12px; /* Jarak antara label dan nilai */
   font-size: 14px;
   color: #555;
 }
@@ -95,6 +89,7 @@
   margin: 0;
   font-size: 18px;
   font-weight: bold;
+  grid-column: span 2; /* Nama full satu baris */
 }
 
 .student-nim,
@@ -105,21 +100,21 @@
   color: #555;
 }
 
-
-.info-text h1 {
-  font-size: 18px;
-  font-weight: bold;
-  grid-column: span 2; /* Nama full satu baris */
-}
-
+/* Menata tampilan teks agar titik dua sejajar */
 .info-text p {
-  margin: 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px; /* Jarak antara label dan nilai */
+  margin: 0;
 }
 
 .info-text p strong {
-  flex-shrink: 0; /* Supaya label tetap sejajar */
-  width: 80px; /* Pastikan titik dua sejajar */
+  width: 100px; /* Lebar tetap agar titik dua sejajar */
   text-align: left;
+  flex-shrink: 0;
+}
+
+.info-text p span {
+  flex-grow: 1;
 }
