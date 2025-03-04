@@ -9,7 +9,7 @@
   }
   .ukt-container {
     flex: 1; // Membuat kedua tabel memiliki ukuran yang sama
-   // Sesuaikan dengan ukuran yang diinginkan
+    max-width: 400px; // Sesuaikan dengan ukuran yang diinginkan
     align-self: flex-start; 
  
   }
@@ -23,7 +23,7 @@
   }
   
   .main-card {
-    width: 80%;
+    width: 50%;
 
     justify-content: start;
   }
