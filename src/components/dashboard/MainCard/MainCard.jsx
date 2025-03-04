@@ -14,24 +14,29 @@ const MainCard = () => {
   const [semester, setSemester] = useState(null); // State untuk menyimpan data semester
   const nama = localStorage.getItem("nama"); // Ambil Nama dari localStorag
 
-
   useEffect(() => {
     if (nim) {
       // Fetch data status pembayaran mahasiswa
-      fetch(`https://be-deploy-sage.vercel.app/monitoring/unama/v1/user/${nim}/payment-status`)
+      fetch(
+        `https://be-deploy-sage.vercel.app/monitoring/unama/v1/user/${nim}/payment-status`
+      )
         .then((response) => response.json())
         .then((data) => setPaymentStatus(data.sts_bayar)) // Simpan status pembayaran
-        .catch((error) => console.error("Error fetching payment status:", error));
+        .catch((error) =>
+          console.error("Error fetching payment status:", error)
+        );
 
-
-        // Fetch data IPK dan IPS
-      fetch(`https://be-deploy-sage.vercel.app/monitoring/unama/v1/ipk/dataipk`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ nim: nim }),
-      })
+      // Fetch data IPK dan IPS
+      fetch(
+        `https://be-deploy-sage.vercel.app/monitoring/unama/v1/ipk/dataipk`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ nim: nim }),
+        }
+      )
         .then((response) => response.json())
         .then((data) => {
           setIpk(data.ipk);
@@ -42,19 +47,25 @@ const MainCard = () => {
       fetch(`https://be-deploy-sage.vercel.app/api/mahasiswa/${nim}`)
         .then((response) => response.json())
         .then((data) => setMahasiswa(data))
-        .catch((error) => console.error("Error fetching mahasiswa data:", error));
+        .catch((error) =>
+          console.error("Error fetching mahasiswa data:", error)
+        );
 
       // Fetch data semester
-      fetch(`https://be-deploy-sage.vercel.app/monitoring/unama/v1/aktivitas_kuliahs/semester/${nim}`)
+      fetch(
+        `https://be-deploy-sage.vercel.app/monitoring/unama/v1/aktivitas_kuliahs/semester/${nim}`
+      )
         .then((response) => response.json())
         .then((data) => {
           if (data && data.semester_ke && data.semester) {
-            const semesterText = `${data.semester_ke} (${data.semester === 'ganjil' ? 'Ganjil' : 'Genap'})`;
+            const semesterText = `${data.semester_ke} (${
+              data.semester === "ganjil" ? "Ganjil" : "Genap"
+            })`;
             setSemester(semesterText);
           } else {
             setSemester("Data semester tidak tersedia");
           }
-        })
+        });
     }
   }, [nim]);
 
@@ -63,28 +74,29 @@ const MainCard = () => {
       {/* Card besar */}
       <div className="main-card">
         {/* Card pertama - Kiri */}
-       
 
         {/* Card kedua - Tengah */}
         <div className="sub-card center-card">
           <h3>Informasi Mahasiswa</h3>
           {mahasiswa ? (
-            <div className="info-container" >
-             
-                   {/* Ganti Avatar dengan Icon */}
-          <Icon
-            name="user circle"
-            size="huge"
-            style={{ color: "#ff207d", marginRight: "16px" }}// Spasi antara ikon dan teks
-          />
+            <div className="info-container">
+              {/* Ganti Avatar dengan Icon */}
+              <Icon
+                name="user circle"
+                size="huge"
+                style={{ color: "#ff207d", marginRight: "16px" }} // Spasi antara ikon dan teks
+              />
               <div className="info-text">
-                {/* Menambahkan fontSize 18px pada nama */}
-                <h1 style={{ margin: 0, fontSize: "18px", fontWeight: "bold" }}>NAMA : {nama}</h1>
-                <p style={{ margin: 0, fontSize: "14px", color: "#555" }}>NIM: {nim}</p>
-                {/* IPK di samping NIM */}
-                <p style={{ margin: "8px 0", fontSize: "16px", color: "#555" }}>IPK: {ipk}</p>
-                {/* Semester Terakhir */}
-                <p style={{ margin: 0, fontSize: "14px", color: "#555" }}>Semester: {semester || "Loading semester..."}</p>
+                <h1>{nama}</h1>
+                <p>
+                  <strong>NIM</strong>: {nim}
+                </p>
+                <p>
+                  <strong>IPK</strong>: {ipk}
+                </p>
+                <p>
+                  <strong>Semester</strong>: {semester || "Loading semester..."}
+                </p>
               </div>
             </div>
           ) : (
@@ -98,7 +110,6 @@ const MainCard = () => {
             <StatusPembayaranUkt
               paymentInfo={{
                 status: paymentStatus,
-               
               }}
             />
           ) : (

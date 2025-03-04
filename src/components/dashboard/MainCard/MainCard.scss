@@ -84,9 +84,11 @@
 }
 
 .info-text {
-  display: flex;
-  flex-direction: column;
-  gap: 8px; /* Jarak antar teks */
+  display: grid;
+  grid-template-columns: auto 1fr; /* Kolom untuk label dan nilai */
+  gap: 4px 12px; /* Jarak antara label dan nilai */
+  font-size: 14px;
+  color: #555;
 }
 
 .student-name {
@@ -101,4 +103,23 @@
   margin: 0;
   font-size: 14px;
   color: #555;
+}
+
+
+.info-text h1 {
+  font-size: 18px;
+  font-weight: bold;
+  grid-column: span 2; /* Nama full satu baris */
+}
+
+.info-text p {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.info-text p strong {
+  flex-shrink: 0; /* Supaya label tetap sejajar */
+  width: 80px; /* Pastikan titik dua sejajar */
+  text-align: left;
 }
