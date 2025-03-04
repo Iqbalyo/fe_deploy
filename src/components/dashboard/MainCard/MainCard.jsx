@@ -1,30 +1,24 @@
 import React, { useEffect, useState } from "react";
-import "./MainCard.scss"; // Styling utama untuk MainCard
-import StatusPembayaranUkt from "./StatusPembayaranUkt"; // Import komponen baru
-import Avatar from "@mui/material/Avatar"; // Import Avatar
-import GpaCard from "../IPSComponents/GpaCard";
-import { Icon } from "semantic-ui-react";
+import "./MainCard.scss";
+import StatusPembayaranUkt from "./StatusPembayaranUkt";
+import { Icon, Table } from "semantic-ui-react";
 
 const MainCard = () => {
-  const [paymentStatus, setPaymentStatus] = useState(null); // State untuk menyimpan status pembayaran
-  const [paymentDate, setPaymentDate] = useState("15 November 2024"); // Default tanggal pembayaran
-  const nim = localStorage.getItem("nim"); // Ambil NIM dari localStorage
-  const [mahasiswa, setMahasiswa] = useState(null); // State untuk menyimpan data mahasiswa
-  const [ipk, setIpk] = useState(null); // State untuk menyimpan IPK
-  const [semester, setSemester] = useState(null); // State untuk menyimpan data semester
-  const nama = localStorage.getItem("nama"); // Ambil Nama dari localStorag
-
+  const [paymentStatus, setPaymentStatus] = useState(null);
+  const [paymentDate, setPaymentDate] = useState("15 November 2024");
+  const nim = localStorage.getItem("nim");
+  const [mahasiswa, setMahasiswa] = useState(null);
+  const [ipk, setIpk] = useState(null);
+  const [semester, setSemester] = useState(null);
+  const nama = localStorage.getItem("nama");
 
   useEffect(() => {
     if (nim) {
-      // Fetch data status pembayaran mahasiswa
       fetch(`https://be-deploy-sage.vercel.app/monitoring/unama/v1/user/${nim}/payment-status`)
         .then((response) => response.json())
-        .then((data) => setPaymentStatus(data.sts_bayar)) // Simpan status pembayaran
+        .then((data) => setPaymentStatus(data.sts_bayar))
         .catch((error) => console.error("Error fetching payment status:", error));
 
-
-        // Fetch data IPK dan IPS
       fetch(`https://be-deploy-sage.vercel.app/monitoring/unama/v1/ipk/dataipk`, {
         method: 'POST',
         headers: {
@@ -38,13 +32,11 @@ const MainCard = () => {
         })
         .catch((error) => console.error("Error fetching IPK data:", error));
 
-      // Fetch data mahasiswa
       fetch(`https://be-deploy-sage.vercel.app/api/mahasiswa/${nim}`)
         .then((response) => response.json())
         .then((data) => setMahasiswa(data))
         .catch((error) => console.error("Error fetching mahasiswa data:", error));
 
-      // Fetch data semester
       fetch(`https://be-deploy-sage.vercel.app/monitoring/unama/v1/aktivitas_kuliahs/semester/${nim}`)
         .then((response) => response.json())
         .then((data) => {
@@ -54,51 +46,51 @@ const MainCard = () => {
           } else {
             setSemester("Data semester tidak tersedia");
           }
-        })
+        });
     }
   }, [nim]);
 
   return (
     <div className="main-card-container">
-      {/* Card besar */}
       <div className="main-card">
-        {/* Card pertama - Kiri */}
-       
-
-        {/* Card kedua - Tengah */}
+        {/* Card Kedua - Informasi Mahasiswa sebagai Tabel */}
         <div className="sub-card center-card">
           <h3>Informasi Mahasiswa</h3>
           {mahasiswa ? (
-            <div className="info-container" >
-             
-                   {/* Ganti Avatar dengan Icon */}
-          <Icon
-            name="user circle"
-            size="huge"
-            style={{ color: "#ff207d", marginRight: "16px" }}// Spasi antara ikon dan teks
-          />
-              <div className="info-text">
-                {/* Menambahkan fontSize 18px pada nama */}
-                <h1 style={{ margin: 0, fontSize: "18px", fontWeight: "bold" , color: "#ff608b" }}>{nama}</h1>
-                <p style={{ margin: 0, fontSize: "18px", color: "#555" }}>NIM: {nim}</p>
-                {/* IPK di samping NIM */}
-                <p style={{ margin: "8px 0", fontSize: "18px", color: "#555" }}>IPK: {ipk}</p>
-                {/* Semester Terakhir */}
-                <p style={{ margin: 0, fontSize: "18px", color: "#555" }}>Semester: {semester || "Loading semester..."}</p>
-              </div>
-            </div>
+            <>
+              <Icon name="user circle" size="huge" style={{ color: "#ff207d", marginBottom: "10px" }} />
+              <Table celled striped>
+                <Table.Body>
+                  <Table.Row>
+                    <Table.Cell width={3}><strong>NAMA</strong></Table.Cell>
+                    <Table.Cell>{nama}</Table.Cell>
+                  </Table.Row>
+                  <Table.Row>
+                    <Table.Cell><strong>NIM</strong></Table.Cell>
+                    <Table.Cell>{nim}</Table.Cell>
+                  </Table.Row>
+                  <Table.Row>
+                    <Table.Cell><strong>IPK</strong></Table.Cell>
+                    <Table.Cell>{ipk || "Loading..."}</Table.Cell>
+                  </Table.Row>
+                  <Table.Row>
+                    <Table.Cell><strong>Semester</strong></Table.Cell>
+                    <Table.Cell>{semester || "Loading semester..."}</Table.Cell>
+                  </Table.Row>
+                </Table.Body>
+              </Table>
+            </>
           ) : (
             <p>Loading data mahasiswa...</p>
           )}
         </div>
 
-        {/* Card ketiga - Kanan */}
+        {/* Card Ketiga - Status Pembayaran */}
         <div className="sub-card right-card">
           {paymentStatus !== null ? (
             <StatusPembayaranUkt
               paymentInfo={{
                 status: paymentStatus,
-               
               }}
             />
           ) : (
