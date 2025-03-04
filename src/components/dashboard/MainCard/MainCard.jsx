@@ -79,7 +79,7 @@ const MainCard = () => {
           />
               <div className="info-text">
                 {/* Menambahkan fontSize 18px pada nama */}
-                <h1 style={{ margin: 0, fontSize: "18px", fontWeight: "bold" }}>NAMA : {nama}</h1>
+                <h1 style={{ margin: 0, fontSize: "18px", fontWeight: "bold" , color: "#ff608b" }}>{nama}</h1>
                 <p style={{ margin: 0, fontSize: "18px", color: "#555" }}>NIM: {nim}</p>
                 {/* IPK di samping NIM */}
                 <p style={{ margin: "8px 0", fontSize: "18px", color: "#555" }}>IPK: {ipk}</p>
