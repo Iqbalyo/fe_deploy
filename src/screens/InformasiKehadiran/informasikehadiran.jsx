@@ -7,6 +7,8 @@ const InformasiKehadiran = () => {
     <div className="content-area">
       {/* <AreaTop /> */}
     <TopProfil/>
+    <br />
+    <br />
       <TableKehadiran />
       <h1>Jadwal Perkuliahan </h1>
       <TableJadwal />
