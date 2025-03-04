@@ -14,7 +14,7 @@ const IpkMahasiswa = () => {
 <IpkChart/>
       
    
-      <p>Halaman ini berisi informasi mengenai IPS mahasiswa.</p>
+      
     </div>
     </>
   );
