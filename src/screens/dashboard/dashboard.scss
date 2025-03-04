@@ -21,10 +21,13 @@
     align-items: flex-start; /* Agar sejajar secara vertikal */
     gap: 20px; /* Atur jarak antara TopProfil dan MaincardIpk */
   }
+
+  .info-container {
+    max-width: 200px;
+  }
   
   .main-card {
-    width: 50%;
-
+    width: 80%;
     justify-content: start;
   }
   
