@@ -80,11 +80,11 @@ const MainCard = () => {
               <div className="info-text">
                 {/* Menambahkan fontSize 18px pada nama */}
                 <h1 style={{ margin: 0, fontSize: "18px", fontWeight: "bold" }}>NAMA : {nama}</h1>
-                <p style={{ margin: 0, fontSize: "14px", color: "#555" }}>NIM: {nim}</p>
+                <p style={{ margin: 0, fontSize: "18px", color: "#555" }}>NIM: {nim}</p>
                 {/* IPK di samping NIM */}
-                <p style={{ margin: "8px 0", fontSize: "16px", color: "#555" }}>IPK: {ipk}</p>
+                <p style={{ margin: "8px 0", fontSize: "18px", color: "#555" }}>IPK: {ipk}</p>
                 {/* Semester Terakhir */}
-                <p style={{ margin: 0, fontSize: "14px", color: "#555" }}>Semester: {semester || "Loading semester..."}</p>
+                <p style={{ margin: 0, fontSize: "18px", color: "#555" }}>Semester: {semester || "Loading semester..."}</p>
               </div>
             </div>
           ) : (
