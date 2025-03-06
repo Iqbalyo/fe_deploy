@@ -44,7 +44,7 @@ const LoginPage = ({ onLogin }) => {
         sx={{
           padding: 4,
           borderRadius: 3,
-          backgroundColor: "white",
+          backgroundColor: "black",
         }}
       >
         <Typography variant="h4" sx={{ textAlign: "center", mb: 3, fontWeight: "bold" }}>
