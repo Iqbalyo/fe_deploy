@@ -61,7 +61,7 @@ const MainCard = () => {
           if (data.jurusan === 1) {
             setJurusan("TI");
           } else if (data.jurusan === 2) {
-            setJurusan("SIs");
+            setJurusan("SI");
           } else if (data.jurusan === 3) {
             setJurusan("SK");
           } else {
