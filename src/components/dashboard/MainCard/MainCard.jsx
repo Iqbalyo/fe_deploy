@@ -9,6 +9,7 @@ const MainCard = () => {
   const nim = localStorage.getItem("nim");
   const [mahasiswa, setMahasiswa] = useState(null);
   const [ipk, setIpk] = useState(null);
+  const [periode, setperiode] = useState(null);
   const [semester, setSemester] = useState(null);
   const [jurusan, setJurusan] = useState(null); // ⬅️ Default Loading
   const nama = localStorage.getItem("nama");
@@ -58,6 +59,9 @@ const MainCard = () => {
       })
         .then((response) => response.json())
         .then((data) => {
+          setperiode(data.periode)
+
+
           if (data.jurusan === 1) {
             setJurusan("TI");
           } else if (data.jurusan === 2) {
@@ -98,6 +102,10 @@ const MainCard = () => {
                   <Table.Row>
                     <Table.Cell><strong>Semester</strong></Table.Cell>
                     <Table.Cell>{semester || "Loading semester..."}</Table.Cell>
+                  </Table.Row>
+                  <Table.Row>
+                    <Table.Cell><strong>Periode</strong></Table.Cell>
+                    <Table.Cell>{periode || "Loading semester..."}</Table.Cell>
                   </Table.Row>
                   <Table.Row>
                     <Table.Cell><strong>Jurusan</strong></Table.Cell>
