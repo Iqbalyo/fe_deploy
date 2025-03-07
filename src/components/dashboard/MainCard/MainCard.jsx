@@ -10,7 +10,7 @@ const MainCard = () => {
   const [mahasiswa, setMahasiswa] = useState(null);
   const [ipk, setIpk] = useState(null);
   const [semester, setSemester] = useState(null);
-  const [jurusan, setJurusan] = useState("Loading..."); // ⬅️ Default Loading
+  const [jurusan, setJurusan] = useState(null); // ⬅️ Default Loading
   const nama = localStorage.getItem("nama");
 
   useEffect(() => {
@@ -49,7 +49,7 @@ const MainCard = () => {
         .catch((error) => console.error("Error fetching semester data:", error));
 //
       // ⬇️ Fetch jurusan berdasarkan nim dan atur tampilannya
-      fetch(`https://be-deploy-sage.vercel.app/monitoring/unama/v1/ipk/dataipk`,{
+      const data = fetch(`https://be-deploy-sage.vercel.app/monitoring/unama/v1/ipk/dataipk`,{
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -58,6 +58,7 @@ const MainCard = () => {
       })
         .then((response) => response.json())
         .then((data) => {
+          console.log("data", data)
           if (data && data.jurusan !== undefined) {
             setJurusan(data.jurusan === 2 ? "SI" : "TI");
           } else {
@@ -65,6 +66,7 @@ const MainCard = () => {
           }
         })
         .catch((error) => console.error("Error fetching jurusan:", error));
+        console.log("data", data)
     }
   }, [nim]);
 
