@@ -47,13 +47,19 @@ const MainCard = () => {
           }
         })
         .catch((error) => console.error("Error fetching semester data:", error));
-
+//
       // ⬇️ Fetch jurusan berdasarkan nim dan atur tampilannya
-      fetch(`https://be-deploy-sage.vercel.app/monitoring/unama/v1/aktivitas_kuliahs/${nim}`)
+      fetch(`https://be-deploy-sage.vercel.app/monitoring/unama/v1/ipk/dataipk`,{
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ nim: nim }),
+      })
         .then((response) => response.json())
         .then((data) => {
-          if (data && data.jurusan_id !== undefined) {
-            setJurusan(data.jurusan_id === 2 ? "SI" : "TI");
+          if (data && data.jurusan !== undefined) {
+            setJurusan(data.jurusan === 2 ? "SI" : "TI");
           } else {
             setJurusan("Tidak Diketahui");
           }
