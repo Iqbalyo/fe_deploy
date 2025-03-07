@@ -58,15 +58,17 @@ const MainCard = () => {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log("data", data)
-          if (data && data.jurusan !== undefined) {
-            setJurusan(data.jurusan === 2 ? "SI" : "TI");
+          if (data.jurusan_id === 1) {
+            setJurusan("TI");
+          } else if (data.jurusan_id === 2) {
+            setJurusan("SIs");
+          } else if (data.jurusan_id === 3) {
+            setJurusan("SK");
           } else {
             setJurusan("Tidak Diketahui");
           }
         })
         .catch((error) => console.error("Error fetching jurusan:", error));
-        console.log("data", data)
     }
   }, [nim]);
 
