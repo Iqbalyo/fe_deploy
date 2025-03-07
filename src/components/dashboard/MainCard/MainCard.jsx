@@ -58,11 +58,11 @@ const MainCard = () => {
       })
         .then((response) => response.json())
         .then((data) => {
-          if (data.jurusan_id === 1) {
+          if (data.jurusan === 1) {
             setJurusan("TI");
-          } else if (data.jurusan_id === 2) {
+          } else if (data.jurusan === 2) {
             setJurusan("SIs");
-          } else if (data.jurusan_id === 3) {
+          } else if (data.jurusan === 3) {
             setJurusan("SK");
           } else {
             setJurusan("Tidak Diketahui");
