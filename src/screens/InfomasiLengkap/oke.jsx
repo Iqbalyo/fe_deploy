@@ -15,6 +15,8 @@ const Oke = () => {
   const { matakuliah_nama } = useParams();
   const nim = localStorage.getItem("nim");
   const [dataKehadiran, setDataKehadiran] = useState([]);
+  const [mataKuliah, setMataKuliah] = useState("");
+  const [dosen, setDosen] = useState("");
 
   const formatDate = (date) => {
     let day = date.getDate();
@@ -45,6 +47,12 @@ const Oke = () => {
         const filteredData = data.filter((item) => item.nim === nim);
         console.log("Data setelah filter:", filteredData);
         setDataKehadiran(filteredData);
+
+        // Ambil mata kuliah dan dosen dari entri pertama
+        if (filteredData.length > 0) {
+          setMataKuliah(filteredData[0].matakuliah_nama);
+          setDosen(filteredData[0].dosen);
+        }
       } catch (error) {
         console.error("Error fetching kehadiran:", error);
       }
@@ -62,34 +70,36 @@ const Oke = () => {
       <Typography variant="h6" component="div" style={{ padding: "16px" }}>
         Informasi Kehadiran
       </Typography>
+      <Typography variant="subtitle1" style={{ padding: "8px 16px" }}>
+        Mata Kuliah: {mataKuliah}
+      </Typography>
+      <Typography variant="subtitle1" style={{ padding: "8px 16px" }}>
+        Dosen: {dosen}
+      </Typography>
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell>Nama Mata Kuliah</TableCell>
             <TableCell>Pertemuan Ke</TableCell>
             <TableCell>Status</TableCell>
             <TableCell>Tanggal Kuliah</TableCell>
             <TableCell>Waktu</TableCell>
-            <TableCell>Dosen</TableCell> {/* Tambahkan kolom Dosen */}
           </TableRow>
         </TableHead>
         <TableBody>
           {dataKehadiran.length > 0 ? (
             dataKehadiran.map((row, index) => (
               <TableRow key={index}>
-                <TableCell>{row.matakuliah_nama}</TableCell>
                 <TableCell>{row.pertemuan_ke}</TableCell>
                 <TableCell>{row.status !== null ? row.status : "A"}</TableCell>
                 <TableCell>
                   {row.pertemuan ? formatDate(new Date(row.pertemuan.tanggal_kuliah)) : "N/A"}
                 </TableCell>
                 <TableCell>{row.pertemuan ? row.pertemuan.waktu : "N/A"}</TableCell>
-                <TableCell>{row.dosen}</TableCell> {/* Tampilkan nama dosen */}
               </TableRow>
             ))
           ) : (
             <TableRow>
-              <TableCell colSpan={6} align="center">
+              <TableCell colSpan={4} align="center">
                 Tidak ada data kehadiran untuk NIM ini.
               </TableCell>
             </TableRow>
