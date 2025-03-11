@@ -15,18 +15,14 @@ const Oke = () => {
   const { matakuliah_nama } = useParams();
   const nim = localStorage.getItem("nim");
   const [dataKehadiran, setDataKehadiran] = useState([]);
-  const [mataKuliah, setMataKuliah] = useState("");
-  const [dosen, setDosen] = useState("");
 
   const formatDate = (date) => {
     let day = date.getDate();
     let month = date.getMonth() + 1;
     let year = date.getFullYear();
-
-    day = day < 10 ? "0" + day : day;
-    month = month < 10 ? "0" + month : month;
-
-    return `${day}/${month}/${year}`;
+    return `${day.toString().padStart(2, "0")}/${month
+      .toString()
+      .padStart(2, "0")}/${year}`;
   };
 
   useEffect(() => {
@@ -36,53 +32,49 @@ const Oke = () => {
           `https://be-deploy-sage.vercel.app/monitoring/unama/v1/informasi-kehadiran/${matakuliah_nama}`
         );
 
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
+        if (!response.ok) throw new Error("Network response was not ok");
 
         const data = await response.json();
-        console.log("Data dari API:", data);
-
-        // Filter data berdasarkan NIM
         const filteredData = data.filter((item) => item.nim === nim);
-        console.log("Data setelah filter:", filteredData);
         setDataKehadiran(filteredData);
-
-        // Ambil mata kuliah dan dosen dari entri pertama
-        if (filteredData.length > 0) {
-          setMataKuliah(filteredData[0].matakuliah_nama);
-          setDosen(filteredData[0].dosen);
-        }
       } catch (error) {
         console.error("Error fetching kehadiran:", error);
       }
     };
 
-    if (nim) {
-      fetchKehadiran();
-    } else {
-      console.error("NIM tidak ditemukan di localStorage");
-    }
+    if (nim) fetchKehadiran();
+    else console.error("NIM tidak ditemukan di localStorage");
   }, [nim, matakuliah_nama]);
 
+  const matkul = dataKehadiran[0]?.matakuliah_nama || "Mata Kuliah Tidak Ditemukan";
+  const dosen = dataKehadiran[0]?.dosen || "Dosen Tidak Ditemukan";
+
   return (
-    <TableContainer component={Paper}>
-      <Typography variant="h6" component="div" style={{ padding: "16px" }}>
-        Informasi Kehadiran
+    <TableContainer
+      component={Paper}
+      sx={{
+        backgroundColor: "#f5f5f5",
+        padding: "16px",
+        borderRadius: "10px",
+        boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+      }}
+    >
+      {/* Header Nama Mata Kuliah & Dosen */}
+      <Typography variant="h5" fontWeight="bold" color="#333" gutterBottom>
+        {matkul}
       </Typography>
-      <Typography variant="subtitle1" style={{ padding: "8px 16px" }}>
-        Mata Kuliah: {mataKuliah}
-      </Typography>
-      <Typography variant="subtitle1" style={{ padding: "8px 16px" }}>
+      <Typography variant="subtitle1" fontStyle="italic" color="#555" mb={2}>
         Dosen: {dosen}
       </Typography>
-      <Table>
+
+      {/* Tabel */}
+      <Table sx={{ backgroundColor: "#fff", borderRadius: "8px" }}>
         <TableHead>
-          <TableRow>
-            <TableCell>Pertemuan Ke</TableCell>
-            <TableCell>Status</TableCell>
-            <TableCell>Tanggal Kuliah</TableCell>
-            <TableCell>Waktu</TableCell>
+          <TableRow sx={{ backgroundColor: "#e0e0e0" }}>
+            <TableCell sx={{ fontWeight: "bold", color: "#333" }}>Pertemuan Ke</TableCell>
+            <TableCell sx={{ fontWeight: "bold", color: "#333" }}>Status</TableCell>
+            <TableCell sx={{ fontWeight: "bold", color: "#333" }}>Tanggal Kuliah</TableCell>
+            <TableCell sx={{ fontWeight: "bold", color: "#333" }}>Waktu</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
